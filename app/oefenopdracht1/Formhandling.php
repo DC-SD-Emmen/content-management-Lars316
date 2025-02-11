@@ -6,13 +6,13 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$gameManager = new GameManager($db);
+$dataManager = new DataManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if($gameManager->fileUpload($_FILES["fileToUpload"])) {
+    if($dataManager->fileUpload($_FILES["fileToUpload"])) {
 
-        $gameManager->insert($_POST, $_FILES["fileToUpload"]['name']);
+        $dataManager->insert($_POST, $_FILES["fileToUpload"]['name']);
 
     } else {
         echo "There was an error in the file upload, database entry not uploaded";
