@@ -1,10 +1,9 @@
 
 <?php
 
-$host = "mysql"; // Le host est le nom du service, présent dans le docker-compose.yml
-$dbname = "my-wonderful-website";
-$charset = "utf8";
-$port = "3306";
+spl_autoload_register(function ($class) {
+    include 'classes/' . $class . '.php';
+});
 
 ?>
 
@@ -28,27 +27,19 @@ $port = "3306";
 
 <h2>Hello world!</h2>
 
-<form action="index.php" method="post" enctype="multipart/form-data">
+<form action="Formhandling.php" method="post" enctype="multipart/form-data">
 
 <label for="username">Username:</label><br>
-<input type="text" class="textfield" name="username" required>
-
-<br>
+<input type="text" class="textfield" name="username" required><br>
 
 <label for="password">Password:</label><br>
-<input type="password" class="textfield" name="password" required>
+<input type="password" class="textfield" name="password" required><br>
 
 <br>
 
-<button type="submit" class="button">Login</button>
+<button type="submit" class="button">Register</button>
 
 </form>
-
-<?php
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") { }
-
-?>
 
 <br>
 
