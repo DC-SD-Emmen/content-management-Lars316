@@ -21,7 +21,7 @@ class DataManager {
         $rating = htmlspecialchars($data['rating']);
         $price = htmlspecialchars($data['price']);
     
-        $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
+        $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/'; //'/[A-Za-z0-9_]*/';
     
         if (!preg_match($generalRegex, $title)) {
           echo "<p>Sorry, the title you filled in contains one or more characters that are not accepted.</p>";
