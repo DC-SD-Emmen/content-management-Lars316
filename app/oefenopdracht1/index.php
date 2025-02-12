@@ -25,7 +25,7 @@ spl_autoload_register(function ($class) {
 
 <body>
 
-<header>Get registered</header>
+<h1>Get registered</h1>
 
 <form action="Formhandling.php" method="post" enctype="multipart/form-data">
 
