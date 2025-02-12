@@ -25,7 +25,7 @@ spl_autoload_register(function ($class) {
 
 <body>
 
-<h2>Hello world!</h2>
+<header>Get registered</header>
 
 <form action="Formhandling.php" method="post" enctype="multipart/form-data">
 
@@ -34,6 +34,9 @@ spl_autoload_register(function ($class) {
 
 <label for="password">Password:</label><br>
 <input type="password" class="textfield" name="password" required><br>
+
+<label for="passwordRepeat">Repeat password:</label><br>
+<input type="password" class="textfield" name="passwordRepeat" required><br>
 
 <br>
 

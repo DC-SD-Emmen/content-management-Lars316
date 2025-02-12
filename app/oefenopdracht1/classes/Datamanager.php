@@ -21,11 +21,13 @@ class DataManager {
         $rating = htmlspecialchars($data['rating']);
         $price = htmlspecialchars($data['price']);
     
-        $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/'; //'/[A-Za-z0-9_]*/';
+        $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
+        // $usernameRegex = '/[A-Za-z0-9_]*/';
+        // $passwordRegex = '/placeholder/';
     
-        if (!preg_match($generalRegex, $title)) {
+        if (!preg_match($generalRegex, $title)) { // could probably make this the username
           echo "<p>Sorry, the title you filled in contains one or more characters that are not accepted.</p>";
-        } else if (!preg_match($generalRegex, $genre)) {
+        } else if (!preg_match($generalRegex, $genre)) { // then this one's the password
           echo "<p>Sorry, the genre(s) you filled in contain one or more characters that are not accepted.</p>";
         } else if (!preg_match($generalRegex, $paltform)) {
           echo "<p>Sorry, the platform(s) you filled contain one or more characters that are not accepted.</p>";
@@ -39,8 +41,8 @@ class DataManager {
             VALUES (:image, :title, :genre, :platform, :release_year, :rating, :price)");
     
             $stmt->bindParam(':image', $fileName);
-            $stmt->bindParam(':title', $title);
-            $stmt->bindParam(':genre', $genre);
+            $stmt->bindParam(':title', $title); // username
+            $stmt->bindParam(':genre', $genre); // password
             $stmt->bindParam(':platform', $platform);
             $stmt->bindParam(':release_year', $release_year);
             $stmt->bindParam(':rating', $rating);
