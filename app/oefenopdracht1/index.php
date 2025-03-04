@@ -5,6 +5,21 @@ spl_autoload_register(function ($class) {
     include 'classes/' . $class . '.php';
 });
 
+$db = new Database();
+$dataManager = new DataManager($db);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if($dataManager->fileUpload($_FILES["fileToUpload"])) {
+
+        $dataManager->insert($_POST, $_FILES["fileToUpload"]['name']);
+
+    } else {
+        echo "There was an error in the file upload, database entry not uploaded";
+    }
+    
+}
+
 ?>
 
 <html>
@@ -27,29 +42,28 @@ spl_autoload_register(function ($class) {
 
 <h1>Get registered</h1>
 
-<form action="Formhandling.php" method="post" enctype="multipart/form-data">
+<form action="index.php" method="post" enctype="multipart/form-data">
 
 <p>Please pick a username. You can use letters and numbers,<br>
    but no special characters with the exception of underscores are allowed.
 </p>
 
-<br>
-
 <label for="username">Username:</label><br>
 <input type="text" class="textfield" name="username" required><br>
+
+<br>
 
 <p>Please choose a password, and make sure to remember it and keep it safe.<br>
    Please use a combination of letters, numbers, and special characters,<br>
    and make sure it's at least 8 characters long.
 </p>
 
-<br>
-
 <label for="password">Password:</label><br>
 <input type="password" class="textfield" name="password" required><br>
 
-<label for="passwordRepeat">Repeat password:</label><br>
-<input type="password" class="textfield" name="passwordRepeat" required><br>
+<!-- <label for="passwordRepeat">Repeat password:</label><br>
+<input type="password" class="textfield" name="passwordRepeat" required><br> -->
+<!-- Okay since Google is refusing to give me an anwser on how to compare the inputs, this idea is gonna have to be saved until later. -->
 
 <br>
 
