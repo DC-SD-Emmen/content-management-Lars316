@@ -60,7 +60,7 @@ class DataManager {
       //   password_hash($userPassword, PASSWORD_DEFAULT);
       // }
 
-      $this->password_hash($userPassword, PASSWORD_DEFAULT);
+      $userPasswordHashed = password_hash($userPassword, PASSWORD_DEFAULT);
 
       try {
         // use exec() because no results are returned
@@ -69,7 +69,7 @@ class DataManager {
         VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db.
 
         $stmt->bindParam(':username', $userName); // username
-        $stmt->bindParam(':password', $userPassword); // password
+        $stmt->bindParam(':password', $userPasswordHashed); // password
 
         // $this->conn->exec($sql);
         $stmt->execute();
