@@ -50,21 +50,23 @@ class DataManager {
 
       $this->checkPassword($userPassword, $errors);
 
-      if (count($errors) > 0) {
-        echo "<p>You did not include one or more conditions in your password:</p>";
-        foreach ($errors as $error) {
-          echo "<p>$error</p>";
-        }
-        return;
-      } else {
-        password_hash($userPassword, PASSWORD_DEFAULT);
-      }
+      // if (count($errors) > 0) {
+      //   echo "<p>You did not include one or more conditions in your password:</p>";
+      //   foreach ($errors as $error) {
+      //     echo "<p>$error</p>";
+      //   }
+      //   return;
+      // } else {
+      //   password_hash($userPassword, PASSWORD_DEFAULT);
+      // }
+
+      $this->password_hash($userPassword, PASSWORD_DEFAULT);
 
       try {
         // use exec() because no results are returned
 
         $stmt = $this->conn->prepare("INSERT INTO users (username, password)
-        VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db (I think).
+        VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db.
 
         $stmt->bindParam(':username', $userName); // username
         $stmt->bindParam(':password', $userPassword); // password
