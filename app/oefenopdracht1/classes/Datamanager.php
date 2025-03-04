@@ -28,7 +28,7 @@ class DataManager {
       $errors[] = "Password must include at least one letter!";
     }
 
-    if (!preg_match("#[^a-zA-Z0-9'\"]+#", $userPassword)) {
+    if (!preg_match("#[^a-zA-Z0-9'\"\\\\]+#", $userPassword)) {
       $errors[] = "Password must include at least one special character!";
     }
 
@@ -50,29 +50,15 @@ class DataManager {
 
       $this->checkPassword($userPassword, $errors);
 
-      // public function checkPassword($userPassword, & $errors) {
-
-      //   $errors_init = $errors;
-    
-      //   if (strlen($userPassword) < 8) {
-      //     $errors[] = "Password too short!";
-      //   }
-    
-      //   if (!preg_match("#[0-9]+#", $userPassword)) {
-      //     $errors[] = "Password must include at least one number!";
-      //   }
-    
-      //   if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
-      //     $errors[] = "Password must include at least one letter!";
-      //   }
-  
-      //   if (!preg_match("#[^a-zA-Z0-9'\"\\]+#", $userPassword)) {
-      //     $errors[] = "Password must include at least one special character!";
-      //   }
-  
-      //   return ($errors == $errors_init);
-        
-      // };
+      if (count($errors) > 0) {
+        echo "<p>You did not include one or more conditions in your password:</p>";
+        foreach ($errors as $error) {
+          echo "<p>$error</p>";
+        }
+        return;
+      } else {
+        password_hash($userPassword, PASSWORD_DEFAULT);
+      }
 
       try {
         // use exec() because no results are returned
