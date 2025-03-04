@@ -12,43 +12,67 @@ class DataManager {
     $this->conn = $db->getConnection();
   }
 
+  public function checkPassword($userPassword, & $errors) {
+
+    $errors_init = $errors;
+
+    if (strlen($userPassword) < 8) {
+      $errors[] = "Password too short!";
+    }
+
+    if (!preg_match("#[0-9]+#", $userPassword)) {
+      $errors[] = "Password must include at least one number!";
+    }
+
+    if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
+      $errors[] = "Password must include at least one letter!";
+    }
+
+    if (!preg_match("#[^a-zA-Z0-9'\"\\]+#", $userPassword)) {
+      $errors[] = "Password must include at least one special character!";
+    }
+
+    return ($errors == $errors_init);
+    
+  }
+
   public function insert($data, $fileName) {
 
     $userName = htmlspecialchars($data['username']); // this username is the one from the form
     $userPassword = htmlspecialchars($data['password']);
 
-    $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
+    // $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
     $userNameRegex = '/[A-Za-z0-9_]*/';
-
-    public function checkPassword($userPassword, & $errors) {
-
-      $errors_init = $errors;
-  
-      if (strlen($userPassword) < 8) {
-        $errors[] = "Password too short!";
-      }
-  
-      if (!preg_match("#[0-9]+#", $userPassword)) {
-        $errors[] = "Password must include at least one number!";
-      }
-  
-      if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
-        $errors[] = "Password must include at least one letter!";
-      }
-
-      if (!preg_match("#[^a-zA-Z0-9'\"\\]+#", $userPassword)) {
-        $errors[] = "Password must include at least one special character!";
-      }
-
-      return ($errors == $errors_init);
-      
-    };
 
     if (!preg_match($userNameRegex, $userName)) { // could probably make this the username
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
       checkPassword($userPassword, $errors);
+
+      // public function checkPassword($userPassword, & $errors) {
+
+      //   $errors_init = $errors;
+    
+      //   if (strlen($userPassword) < 8) {
+      //     $errors[] = "Password too short!";
+      //   }
+    
+      //   if (!preg_match("#[0-9]+#", $userPassword)) {
+      //     $errors[] = "Password must include at least one number!";
+      //   }
+    
+      //   if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
+      //     $errors[] = "Password must include at least one letter!";
+      //   }
+  
+      //   if (!preg_match("#[^a-zA-Z0-9'\"\\]+#", $userPassword)) {
+      //     $errors[] = "Password must include at least one special character!";
+      //   }
+  
+      //   return ($errors == $errors_init);
+        
+      // };
 
       try {
         // use exec() because no results are returned
