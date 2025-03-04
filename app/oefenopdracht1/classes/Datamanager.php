@@ -36,7 +36,7 @@ class DataManager {
     
   }
 
-  public function insert($data, $fileName) {
+  public function insert($data) {
 
     $userName = htmlspecialchars($data['username']); // this username is the one from the form
     $userPassword = htmlspecialchars($data['password']);
@@ -77,9 +77,8 @@ class DataManager {
       try {
         // use exec() because no results are returned
 
-        //!stmt moet nog worden aangepast om ook de filename in de database te zetten
         $stmt = $this->conn->prepare("INSERT INTO users (username, password)
-        VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db.
+        VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db (I think).
 
         $stmt->bindParam(':username', $userName); // username
         $stmt->bindParam(':password', $userPassword); // password
