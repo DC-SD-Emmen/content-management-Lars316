@@ -28,7 +28,7 @@ class DataManager {
       $errors[] = "Password must include at least one letter!";
     }
 
-    if (!preg_match("#[^a-zA-Z0-9'\"\\]+#", $userPassword)) {
+    if (!preg_match("#[^a-zA-Z0-9'\"]+#", $userPassword)) {
       $errors[] = "Password must include at least one special character!";
     }
 
@@ -48,7 +48,7 @@ class DataManager {
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
-      checkPassword($userPassword, $errors);
+      $this->checkPassword($userPassword, $errors);
 
       // public function checkPassword($userPassword, & $errors) {
 
