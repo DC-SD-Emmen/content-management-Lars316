@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>User Registration</title>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -34,18 +34,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<h1>Login</h1>
+<a href="index.php">Go back</a>
+
+<h1>Get registered</h1>
 
 <form action="index.php" method="post" enctype="multipart/form-data">
 
-<p>Please enter your username.</p>
+<p>Please pick a username. You can use letters and numbers,<br>
+   but no special characters with the exception of underscores are allowed.
+</p>
 
 <label for="username">Username:</label><br>
 <input type="text" class="textfield" name="username" required><br>
 
 <br>
 
-<p>Please enter your password.</p>
+<p>Please choose a password, and make sure to remember it and keep it safe.<br>
+   Please use a combination of letters, numbers, and special characters,<br>
+   and make sure it's at least 8 characters long.
+</p>
 
 <label for="password">Password:</label><br>
 <input type="password" class="textfield" name="password" required><br>
@@ -56,21 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <br>
 
-<button type="submit" class="button">Login</button>
+<button type="submit" class="button">Register</button>
 
 </form>
-
-<br>
-
-<p>Don't have an account?</p>
-<br>
-<a href="registration.php">Get registered</a>
-<br><br>
-
-<p>Forgot your password?</p>
-<br>
-<a href="">I forgot my password</a>
-<br><br>
 
 </body>
 
