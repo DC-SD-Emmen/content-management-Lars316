@@ -14,25 +14,25 @@ class DataManager {
 
   public function checkPassword($userPassword, & $errors) {
 
-    $errors_init = $errors;
+    $errors_init_count = count($errors);
 
     if (strlen($userPassword) < 8) {
-      $errors[] = "Password too short!";
+      $errors[] = "Password must be at least 8 characters long.";
     }
 
     if (!preg_match("#[0-9]+#", $userPassword)) {
-      $errors[] = "Password must include at least one number!";
+      $errors[] = "Password must include at least one number.";
     }
 
     if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
-      $errors[] = "Password must include at least one letter!";
+      $errors[] = "Password must include at least one letter.";
     }
 
     if (!preg_match("#[^a-zA-Z0-9'\"\\\\]+#", $userPassword)) {
-      $errors[] = "Password must include at least one special character!";
+      $errors[] = "Password must include at least one special character.";
     }
 
-    return ($errors == $errors_init);
+    return (count($errors) == $errors_init_count);
     
   }
 
@@ -42,23 +42,26 @@ class DataManager {
     $userPassword = htmlspecialchars($data['password']);
 
     // $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
-    $userNameRegex = '/^[A-Za-z0-9_]+$/'; // change
+    $userNameRegex = '/^[A-Za-z0-9_]+$/';
 
     if (!preg_match($userNameRegex, $userName)) { // could probably make this the username
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
-      $this->checkPassword($userPassword, $errors);
+      $errors = [];
 
-      // if (count($errors) > 0) {
-      //   echo "<p>You did not include one or more conditions in your password:</p>";
-      //   foreach ($errors as $error) {
-      //     echo "<p>$error</p>";
-      //   }
-      //   return;
-      // } else {
-      //   password_hash($userPassword, PASSWORD_DEFAULT);
-      // }
+      // $this->checkPassword($userPassword, $errors);
+
+      if (!$this->checkPassword($userPassword, $errors)) {
+
+        echo "<p>You did not include one or more conditions in your password, those being:</p>";
+        foreach ($errors as $error) {
+            echo "<p>$error</p>";
+        }
+
+        return;
+
+      }
 
       $userPasswordHashed = password_hash($userPassword, PASSWORD_DEFAULT);
 
