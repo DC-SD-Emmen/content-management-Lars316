@@ -42,7 +42,7 @@ class DataManager {
     $userPassword = htmlspecialchars($data['password']);
 
     // $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
-    $userNameRegex = '/[A-Za-z0-9_]*/';
+    $userNameRegex = '/^[A-Za-z0-9_]+$/';
 
     if (!preg_match($userNameRegex, $userName)) { // could probably make this the username
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
