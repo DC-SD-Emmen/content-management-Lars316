@@ -1,7 +1,7 @@
 
 <?php
 
-class DataManager {
+class RegisterDataManager {
   private $servername = "mysql";
   private $username = "root";
   private $password = "root";

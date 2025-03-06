@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$dataManager = new DataManager($db);
+$dataManager = new LoginDataManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 

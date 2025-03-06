@@ -6,7 +6,7 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$dataManager = new DataManager($db);
+$dataManager = new RegisterDataManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<a href="index.php">Go back</a>
+<a href="registration.php">Go back</a>
 
 <h1>Get registered</h1>
 
