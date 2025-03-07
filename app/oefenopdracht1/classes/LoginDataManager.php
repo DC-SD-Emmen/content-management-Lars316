@@ -12,6 +12,8 @@ class LoginDataManager {
     $this->conn = $db->getConnection();
   }
 
+  
+
 }
 
 ?>
