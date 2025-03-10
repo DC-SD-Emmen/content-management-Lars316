@@ -6,7 +6,8 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$dataManager = new RegisterDataManager($db);
+// $dataManager = new RegisterDataManager($db);
+$dataManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -34,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<a href="registration.php">Go back</a>
+<a href="index.php">Go back</a>
 
 <h1>Get registered</h1>
 
-<form action="index.php" method="post" enctype="multipart/form-data">
+<form action="registration.php" method="post" enctype="multipart/form-data">
 
 <p>Please pick a username. You can use letters and numbers,<br>
    but no special characters with the exception of underscores are allowed.

@@ -1,7 +1,7 @@
 
 <?php
 
-class RegisterDataManager {
+class UserManager {
   private $servername = "mysql";
   private $username = "root";
   private $password = "root";
@@ -85,9 +85,23 @@ class RegisterDataManager {
     
   }
 
+  // public function GetUser($username) {
+
+  //     $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+
+  //     $stmt->bindParam(':username', $username);
+
+  //     $stmt->execute();
+
+  //     return $stmt->fetch();
+
+  // }
+
+
+  
   ///////////////////////////////////////////////////////
-  // I'm not sure this part of the code is necessary...//
-  //////////////////////////////////////////////////////
+  // This code could be useful, just not sure how yet. //
+  ///////////////////////////////////////////////////////
 
   // public function select() {
   //   //hier komt weer een try / catch

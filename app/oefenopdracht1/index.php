@@ -6,30 +6,30 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$dataManager = new LoginDataManager($db);
-$userManager = new UserManager($db->getConnection());
+// $dataManager = new LoginDataManager($db);
+// $userManager = new UserManager($db->getConnection());
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $dataManager->insert($_POST);
+//     $dataManager->insert($_POST);
 
-    if isset($_POST['login']) {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+//     // if isset($_POST['login']) {
+//     //     $username = $_POST['username'];
+//     //     $password = $_POST['password'];
 
-        $user = $userManager->getUser($username);
+//     //     $user = $userManager->getUser($username);
 
-        if (password_verify($password, $user['password'])) {
-            echo "Login successful.";
+//     //     if (password_verify($password, $user['password'])) {
+//     //         echo "Login successful.";
 
-            header("Location: index.php");
-        } else {
-            echo "Login failed.";
-        }
+//     //         header("Location: index.php");
+//     //     } else {
+//     //         echo "Login failed.";
+//     //     }
 
-    }
+//     // }
 
-}
+// }
 
 ?>
 
