@@ -85,18 +85,20 @@ class UserManager {
     
   }
 
-  // public function GetUser($username) {
+  public function GetUser($username) {
 
-  //     $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
 
-  //     $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':username', $username);
 
-  //     $stmt->execute();
+    $stmt->execute();
 
-  //     return $stmt->fetch();
+    return $stmt->fetch();
 
-  // }
+  }
 
+
+  
 
 
   ///////////////////////////////////////////////////////
@@ -117,8 +119,11 @@ class UserManager {
     
   //     // set the resulting array to associative
   //     //Dit maakt van een resultset een Array (lijst)
+
   //     $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
   //     //dit zorgt ervoor dat $result gevult wordt met alle data in een array
+
   //     $results = $stmt->fetchAll();
 
   //     foreach($results as $result) {
@@ -134,7 +139,7 @@ class UserManager {
 
   // }
   
-  
+
   // public function getGame($id) {
 
   //   try {
@@ -144,8 +149,11 @@ class UserManager {
     
   //     // set the resulting array to associative
   //     //Dit maakt van een resultset een Array (lijst)
+
   //     $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
   //     //dit zorgt ervoor dat $result gevult wordt met alle data in een array
+
   //     $results = $stmt->fetchAll();
 
   //     return $results;

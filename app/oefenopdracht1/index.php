@@ -8,27 +8,28 @@ spl_autoload_register(function ($class) {
 $db = new Database();
 $userManager = new UserManager($db);
 
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-//     $dataManager->insert($_POST);
+    $userManager->insert($_POST);
 
-//     // if isset($_POST['login']) {
-//     //     $username = $_POST['username'];
-//     //     $password = $_POST['password'];
+    if (isset($_POST['login'])) {
 
-//     //     $user = $userManager->getUser($username);
+        $username = $_POST['username'];
+        $password = $_POST['password'];
 
-//     //     if (password_verify($password, $user['password'])) {
-//     //         echo "Login successful.";
+        $user = $userManager->getUser($username);
 
-//     //         header("Location: index.php");
-//     //     } else {
-//     //         echo "Login failed.";
-//     //     }
+        if (password_verify($password, $user['password'])) {
+            echo "<p>Login successful.</p>";
 
-//     // }
+            header("Location: index.php");
+        } else {
+            echo "<p>Login failed.</p>";
+        }
 
-// }
+    }
+
+}
 
 ?>
 
@@ -54,25 +55,21 @@ $userManager = new UserManager($db);
 
 <form action="index.php" method="post" enctype="multipart/form-data">
 
-<p>Please enter your username.</p>
+    <p>Please enter your username.</p>
 
-<label for="username">Username:</label><br>
-<input type="text" class="textfield" name="username" required><br>
+    <label for="username">Username:</label><br>
+    <input type="text" class="textfield" name="username" required><br>
 
-<br>
+    <br>
 
-<p>Please enter your password.</p>
+    <p>Please enter your password.</p>
 
-<label for="password">Password:</label><br>
-<input type="password" class="textfield" name="password" required><br>
+    <label for="password">Password:</label><br>
+    <input type="password" class="textfield" name="password" required><br>
 
-<!-- <label for="passwordRepeat">Repeat password:</label><br>
-<input type="password" class="textfield" name="passwordRepeat" required><br> -->
-<!-- Okay since Google is refusing to give me an anwser on how to compare the inputs, this idea is gonna have to be saved until later. -->
+    <br>
 
-<br>
-
-<button type="submit" class="button">Login</button>
+    <button type="submit" class="button">Login</button>
 
 </form>
 
