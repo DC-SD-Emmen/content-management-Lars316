@@ -98,7 +98,7 @@ class UserManager {
   // }
 
 
-  
+
   ///////////////////////////////////////////////////////
   // This code could be useful, just not sure how yet. //
   ///////////////////////////////////////////////////////
@@ -133,6 +133,7 @@ class UserManager {
   //   }
 
   // }
+  
   
   // public function getGame($id) {
 
