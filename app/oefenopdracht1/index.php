@@ -10,7 +10,8 @@ $userManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $userManager->insert($_POST);
+    // $userManager->insert($_POST);
+    $userManager->getUser($_POST);
 
     if (isset($_POST['login'])) {
 

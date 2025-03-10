@@ -14,6 +14,9 @@ class UserManager {
 
   public function checkPassword($userPassword, & $errors) {
 
+    // The variables userName and userPassword refer to the username and password the user filled in,
+    // I just gave them a different name to differentiate them from the username and password used for the database.
+    // (And just in case the code decides to be annoying and use the wrong ones.)
     $errors_init_count = count($errors);
 
     if (strlen($userPassword) < 8) {
@@ -38,13 +41,13 @@ class UserManager {
 
   public function insert($data) {
 
-    $userName = htmlspecialchars($data['username']); // this username is the one from the form
+    $userName = htmlspecialchars($data['username']);
     $userPassword = htmlspecialchars($data['password']);
 
     // $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
     $userNameRegex = '/^[A-Za-z0-9_]+$/';
 
-    if (!preg_match($userNameRegex, $userName)) { // could probably make this the username
+    if (!preg_match($userNameRegex, $userName)) {
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
@@ -98,7 +101,7 @@ class UserManager {
   }
 
 
-  
+
 
 
   ///////////////////////////////////////////////////////
