@@ -17,8 +17,22 @@
 
     <?php
 
+        session_start();
+
+        if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
+            header("Location: index.php");
+            exit();
+        }
+        // session user id
+        if (isset($_POST['logout'])) {
+            session_unset();
+            session_destroy();
+            header("Location: index.php");
+            exit();
+        }
+
         spl_autoload_register(function ($class) {
-            include 'classes/' . $class . '.php';
+            require_once 'classes/' . $class . '.php';
         });
 
         $db = new Database();
@@ -33,7 +47,6 @@
             } else {
                 echo "There was an error in the file upload, database entry not uploaded";
             }
-
             
         }
 

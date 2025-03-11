@@ -1,4 +1,3 @@
-
 <?php
 
 class GameManager {
@@ -166,7 +165,7 @@ class GameManager {
 
 }
 
-?>
+// return this->conn
+// this->conn $db getConnection
 
-<!-- return this->conn
-this->conn $db getConnection -->
+?>

@@ -24,7 +24,7 @@
         <?php
 
             spl_autoload_register(function ($class) {
-                include 'classes/' . $class . '.php';
+                require_once 'classes/' . $class . '.php';
             });
 
             $db = new Database();
