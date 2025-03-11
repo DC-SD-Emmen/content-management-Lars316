@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 spl_autoload_register(function ($class) {
     require_once 'classes/' . $class . '.php';
 });
@@ -17,7 +19,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $userManager->getUser($username);
 
         if (password_verify($password, $user['password'])) {
+            $_SESSION['userid'] = $user['id'];
+            $_SESSION['username'] = $user['username'];
             header("Location: registration.php");
+            exit();
         } else {
             echo "<p>Login failed.</p>";
         }
