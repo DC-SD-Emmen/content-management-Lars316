@@ -1,11 +1,6 @@
-
 <?php
 
 class UserManager {
-  private $servername = "mysql";
-  private $username = "root";
-  private $password = "root";
-  private $dbname = "user_login";
   private $conn;
 
   public function __construct(Database $db) {
@@ -59,7 +54,7 @@ class UserManager {
 
         echo "<p>You did not include one or more conditions in your password, those being:</p>";
         foreach ($errors as $error) {
-            echo "<p>$error</p>";
+            echo "<p>" . $error . "</p>";
         }
 
         return;
@@ -71,6 +66,9 @@ class UserManager {
       try {
         // use exec() because no results are returned
 
+        //in de prepare statement hieronder zie j staan: VALUES (:username, :password)
+        //de dubbele punt is een placeholder
+        //dan zie je daaronder binParam.. hier wordt de data pas ingevuld
         $stmt = $this->conn->prepare("INSERT INTO users (username, password)
         VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db.
 
@@ -96,77 +94,11 @@ class UserManager {
 
     $stmt->execute();
 
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetch();
 
   }
-
-
-
-
-
-  ///////////////////////////////////////////////////////
-  // This code could be useful, just not sure how yet. //
-  ///////////////////////////////////////////////////////
-
-  // public function select() {
-  //   //hier komt weer een try / catch
-  //   //bij try, komt SELECT * from games
-  //   //bij catch: error
-
-  //   $games = [];
-
-  //   try {
-    
-  //     $stmt = $this->conn->prepare("SELECT * FROM games");
-  //     $stmt->execute();
-    
-  //     // set the resulting array to associative
-  //     //Dit maakt van een resultset een Array (lijst)
-
-  //     $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-  //     //dit zorgt ervoor dat $result gevult wordt met alle data in een array
-
-  //     $results = $stmt->fetchAll();
-
-  //     foreach($results as $result) {
-  //       $game = new Game($result['id'], $result['username'], $result['password']);
-  //       array_push($games, $game);
-  //     }
-
-  //     return $games;
-
-  //   } catch (PDOException $e) {
-  //     echo "Error: " . $e->getMessage();
-  //   }
-
-  // }
-  
-
-  // public function getGame($id) {
-
-  //   try {
-    
-  //     $stmt = $this->conn->prepare("SELECT * FROM games WHERE id = $id");
-  //     $stmt->execute();
-    
-  //     // set the resulting array to associative
-  //     //Dit maakt van een resultset een Array (lijst)
-
-  //     $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-
-  //     //dit zorgt ervoor dat $result gevult wordt met alle data in een array
-
-  //     $results = $stmt->fetchAll();
-
-  //     return $results;
-
-  //   } catch (PDOException $e) {
-  //     echo "Error: " . $e->getMessage();
-  //   }
-
-  // }
-  
+ 
 }
 
 ?>

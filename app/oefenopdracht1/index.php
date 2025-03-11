@@ -1,4 +1,3 @@
-
 <?php
 
 spl_autoload_register(function ($class) {
@@ -10,9 +9,6 @@ $userManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // $userManager->insert($_POST);
-    $userManager->getUser($_POST);
-
     if (isset($_POST['login'])) {
 
         $username = $_POST['username'];
@@ -21,9 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $userManager->getUser($username);
 
         if (password_verify($password, $user['password'])) {
-            echo "<p>Login successful.</p>";
-
-            header("Location: index.php");
+            header("Location: registration.php");
         } else {
             echo "<p>Login failed.</p>";
         }
@@ -54,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h1>Login</h1>
 
-<form action="index.php" method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
 
     <p>Please enter your username.</p>
 
@@ -70,7 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <br>
 
-    <button type="submit" class="button">Login</button>
+    <!-- <button type="submit" class="button">Login</button> -->
+    <input type='submit' class='button' name='login' value='Login'>
 
 </form>
 

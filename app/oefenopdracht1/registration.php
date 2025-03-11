@@ -1,4 +1,3 @@
-
 <?php
 
 spl_autoload_register(function ($class) {
@@ -38,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <h1>Get registered</h1>
 
-<form action="registration.php" method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
 
     <p>Please pick a username. You can use letters and numbers,<br>
     but no special characters with the exception of underscores are allowed.
