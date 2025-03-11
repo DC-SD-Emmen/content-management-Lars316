@@ -1,0 +1,170 @@
+/* The display is already responsive without having any @media rules, suprisingly, so that's why there aren't any.  */
+
+body {
+    background-color: rgb(23, 26, 33);
+}
+
+#libraryHeader {
+    background-color: rgb(27, 40, 56);
+    height: max-content;
+    border: 1px solid rgb(27, 40, 56);
+    margin-bottom: 10px;
+}
+
+#libraryName {
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    margin: 10px;
+}
+
+#addGame {
+    background-color: rgb(43, 71, 93);
+    border: 1px solid rgb(43, 71, 93);
+    border-radius: 10px;
+    color: white;
+}
+
+#gameForm {
+    background-color: rgb(43, 71, 93);
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    z-index: 99;
+    width: 400px;
+}
+
+#formHeader {
+    color: white;
+    text-align: center;
+}
+
+#uploadImg {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+.textFieldContainer {
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.input {
+    background-color: rgb(43, 71, 93);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+/* #titleTest {
+    height: 500px;
+} */
+
+#submitandResetButton {
+    display: block;
+    text-align: center;
+}
+
+.submitNreset {
+    background-color: rgb(79, 123, 167);
+    color: white;
+    height: 35px;
+    width: 185px;
+    border: 1px solid rgb(79, 123, 167);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+#main-container {
+    display: flex;
+}
+
+#sideBar {
+    flex: 15%;
+    margin: 0;
+    padding: 0;
+    border: 10px solid rgb(27, 40, 56);
+    width: 200px;
+    background-color: rgb(27, 40, 56);
+    height: 100vh;
+}
+
+.gameIconSmall {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+.gameTitle {
+    position: relative;
+    left: 35px;
+    top: -45px;
+    color: white;
+}
+
+#gameIcons {
+    flex: 85%;
+    margin-left: 10px;
+    background-color: rgb(27, 40, 56);
+    border: 10px solid rgb(27, 40, 56);
+    grid-template-columns: repeat(4, auto);
+}
+
+.gameIcon {
+    width: 302px;
+    margin: 2px;
+}
+
+p {
+    color: white;
+}
+
+#back_arrow {
+    max-width: 75px;
+    max-height: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+#detailsContainer {
+    flex: 85%;
+    margin-left: 10px;
+    background-color: rgb(27, 40, 56);
+    border: 10px solid rgb(27, 40, 56);
+}
+
+#quickInfo {
+    display: flex;
+    align-content: baseline;
+}
+
+#gameImage {
+    max-width: 350px;
+}
+
+#gameDetails {
+    margin-left: 1%;
+}
+
+#detailpageGameTitle {
+    color: white;
+    font-size: x-large;
+}
+
+#gameWorth {
+    display: flex;
+    justify-content: end;
+    font-size: large;
+}

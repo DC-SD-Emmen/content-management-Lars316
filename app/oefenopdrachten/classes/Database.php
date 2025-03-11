@@ -4,7 +4,7 @@
     private $servername = "mysql";
     private $username = "root";
     private $password = "root";
-    private $dbname = "user_login";
+    private $dbname = "gamelibrary";
     private $conn;
 
     //construct function immediately gets executed

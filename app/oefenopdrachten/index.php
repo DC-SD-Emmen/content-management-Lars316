@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             $_SESSION['userid'] = $user['id'];
             $_SESSION['username'] = $user['username'];
-            header("Location: registration.php");
+            header("Location: homepage.php");
             exit();
         } else {
             echo "<p>Login failed.</p>";
