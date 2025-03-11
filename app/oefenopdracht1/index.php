@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <br>
 
-    <!-- <button type="submit" class="button">Login</button> -->
     <input type='submit' class='button' name='login' value='Login'>
 
 </form>

@@ -7,26 +7,26 @@ class UserManager {
     $this->conn = $db->getConnection();
   }
 
-  public function checkPassword($userPassword, & $errors) {
+  public function checkPassword($password, & $errors) {
 
     // The variables userName and userPassword refer to the username and password the user filled in,
     // I just gave them a different name to differentiate them from the username and password used for the database.
     // (And just in case the code decides to be annoying and use the wrong ones.)
     $errors_init_count = count($errors);
 
-    if (strlen($userPassword) < 8) {
+    if (strlen($password) < 8) {
       $errors[] = "Password must be at least 8 characters long.";
     }
 
-    if (!preg_match("#[0-9]+#", $userPassword)) {
+    if (!preg_match("#[0-9]+#", $password)) {
       $errors[] = "Password must include at least one number.";
     }
 
-    if (!preg_match("#[a-zA-Z]+#", $userPassword)) {
+    if (!preg_match("#[a-zA-Z]+#", $password)) {
       $errors[] = "Password must include at least one letter.";
     }
 
-    if (!preg_match("#[^a-zA-Z0-9'\"\\\\]+#", $userPassword)) {
+    if (!preg_match("#[^a-zA-Z0-9'\"\\\\]+#", $password)) {
       $errors[] = "Password must include at least one special character.";
     }
 
@@ -36,21 +36,18 @@ class UserManager {
 
   public function insert($data) {
 
-    $userName = htmlspecialchars($data['username']);
-    $userPassword = htmlspecialchars($data['password']);
+    $username = htmlspecialchars($data['username']);
+    $password = htmlspecialchars($data['password']);
 
-    // $generalRegex = '/(?!<>\/;\\[\\]{}`~)[A-Za-z0-9 ]*/';
-    $userNameRegex = '/^[A-Za-z0-9_]+$/';
+    $usernameRegex = '/^[A-Za-z0-9_]+$/';
 
-    if (!preg_match($userNameRegex, $userName)) {
+    if (!preg_match($usernameRegex, $username)) {
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
       $errors = [];
 
-      // $this->checkPassword($userPassword, $errors);
-
-      if (!$this->checkPassword($userPassword, $errors)) {
+      if (!$this->checkPassword($password, $errors)) {
 
         echo "<p>You did not include one or more conditions in your password, those being:</p>";
         foreach ($errors as $error) {
@@ -61,21 +58,17 @@ class UserManager {
 
       }
 
-      $userPasswordHashed = password_hash($userPassword, PASSWORD_DEFAULT);
+      $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
 
       try {
-        // use exec() because no results are returned
 
-        //in de prepare statement hieronder zie j staan: VALUES (:username, :password)
-        //de dubbele punt is een placeholder
-        //dan zie je daaronder binParam.. hier wordt de data pas ingevuld
+        //:username and :password are placeholders
         $stmt = $this->conn->prepare("INSERT INTO users (username, password)
-        VALUES (:username, :password)"); // the 'users' here isn't an array, it's the table in the db.
+        VALUES (:username, :password)");
 
-        $stmt->bindParam(':username', $userName); // username
-        $stmt->bindParam(':password', $userPasswordHashed); // password
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':password', $passwordHashed);
 
-        // $this->conn->exec($sql);
         $stmt->execute();
         echo "<p>Your account has been created successfully.</p>";
       } catch(PDOException $e) {
