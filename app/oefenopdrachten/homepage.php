@@ -61,6 +61,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button id='addGame'> Add New Game </button>
 
+            <div>
+
+                <form method="POST">
+
+                    <br>
+
+                    <input type="submit" value="Logout" id="logout" name="logout">
+
+                </form>
+
+            </div>
+
             <div id='gameForm' style='display: none;'>
                 <?php
                     include 'add_game.php';

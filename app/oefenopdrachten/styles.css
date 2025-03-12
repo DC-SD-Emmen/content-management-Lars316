@@ -25,6 +25,21 @@ body {
     color: white;
 }
 
+#addGame:hover {
+    cursor: pointer;
+}
+
+#logout {
+    background-color: rgb(43, 71, 93);
+    border: 1px solid rgb(43, 71, 93);
+    border-radius: 10px;
+    color: white;
+}
+
+#logout:hover {
+    cursor: pointer;
+}
+
 #gameForm {
     background-color: rgb(43, 71, 93);
     position: absolute;
