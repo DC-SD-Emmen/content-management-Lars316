@@ -1,3 +1,39 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
+    header("Location: index.php");
+    exit();
+}
+// session user id
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
+
+spl_autoload_register(function ($class) {
+    require_once 'classes/' . $class . '.php';
+});
+
+$db = new Database();
+$gameManager = new GameManager($db);
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if($gameManager->fileUpload($_FILES["fileToUpload"])) {
+
+        $gameManager->insert($_POST, $_FILES["fileToUpload"]['name']);
+
+    } else {
+        echo "There was an error in the file upload, database entry not uploaded";
+    }
+    
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,43 +50,6 @@
     <div id=libraryHeader>
         <p id=libraryName>Welcome, to the National Game Library!!!</p>
     </div>
-
-    <?php
-
-        session_start();
-
-        if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
-            header("Location: index.php");
-            exit();
-        }
-        // session user id
-        if (isset($_POST['logout'])) {
-            session_unset();
-            session_destroy();
-            header("Location: index.php");
-            exit();
-        }
-
-        spl_autoload_register(function ($class) {
-            require_once 'classes/' . $class . '.php';
-        });
-
-        $db = new Database();
-        $gameManager = new GameManager($db);
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            if($gameManager->fileUpload($_FILES["fileToUpload"])) {
-
-                $gameManager->insert($_POST, $_FILES["fileToUpload"]['name']);
-
-            } else {
-                echo "There was an error in the file upload, database entry not uploaded";
-            }
-            
-        }
-
-    ?>
 
     <?php
         $games = $gameManager->select();
@@ -70,7 +69,7 @@
 
             <div id="sidebarforSmallScreen">
 
-                <button>Menu</button>
+                <!-- <button>Menu</button> -->
 
                 <div id="sidebarContent">
 
@@ -90,7 +89,6 @@
 
         </div>
 
-
         <div id='gameIcons'>
 
             <?php
@@ -105,15 +103,7 @@
 
         </div>
 
-
-
     </div>
-
-    
-  
-
-
-
 
     <script src='script.js'></script>
 

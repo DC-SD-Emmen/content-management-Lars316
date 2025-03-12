@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +10,7 @@
 
 <body>
 
-    <a href='index.php'>
+    <a href='homepage.php'>
         <img id=back_arrow src='backtohomepage.png'>
     </a>
 

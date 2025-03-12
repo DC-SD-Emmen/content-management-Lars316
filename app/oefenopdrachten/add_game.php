@@ -37,7 +37,7 @@
 
             <div class=textFieldContainer>
                 <label for="release-year">Release date:</label><br>
-                <input type="date" class="input" name="release_year" required>
+                <input type="date" class="input" name="release-year" required>
             </div>
 
             <br>
