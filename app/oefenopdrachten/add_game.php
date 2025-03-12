@@ -30,61 +30,61 @@
             
             <div class=textFieldContainer>
                 <label for="title">Title:</label><br>
-                <input type="text" class="input" name="title" required>
+                <input type="text" class="input" id="title" name="title" required>
             </div>
 
             <br>
 
             <div class=textFieldContainer>
                 <label for="release-year">Release date:</label><br>
-                <input type="date" class="input" name="release-year" required>
+                <input type="date" class="input" id="release-year" name="release-year" required>
             </div>
 
             <br>
 
             <!-- <div class=textFieldContainer>
-                <label for="storygenre">Genre(s) (Story) (Not required if the game has no story):</label><br>
-                <input type="text" id="storygenre" name="storygenre" placeholder="e.g. fantasy, romance">
+                <label for="storyGenre">Genre(s) (Story) (Not required if the game has no story):</label><br>
+                <input type="text" class="input" id="storyGenre" name="storyGenre" placeholder="e.g. fantasy, romance">
             </div>-->
 
             <div class=textFieldContainer>
-                <label for="genre">Genre(s) (Gameplay):</label><br>
-                <input type="text" class="input" name="genre" placeholder="e.g. platformer, sandbox" required>
+                <label for="playGenre">Genre(s) (Gameplay):</label><br>
+                <input type="text" class="input" id="playGenre" name="playGenre" placeholder="e.g. platformer, sandbox" required>
             </div>
 
             <br>
 
             <div class=textFieldContainer>
                 <label for="platform">Platform(s):</label><br>
-                <input type="text" class="input" name="platform" required>
+                <input type="text" class="input" id="platform" name="platform" required>
             </div>
 
             <!--<br>
             
             <div class=textFieldContainer>
                 <label for="description">Description/Story summary:</label><br>
-                <input type="text" id="description" name="description" placeholder="description/story summary">
+                <input type="text" class="input" id="description" name="description" placeholder="description/story summary">
             </div>
 
             <br>
 
             <div class=textFieldContainer>
-                <label for="addinfo">Additional information (Any extra information that does not fit the other fields. Optional.):</label><br>
-                <input type="text" name="addinfo" placeholder="additional information">
+                <label for="addInfo">Additional information (Any extra information that does not fit the other fields. Optional.):</label><br>
+                <input type="text" class="input" id-"addInfo" name="addInfo" placeholder="additional information">
             </div>-->
 
             <br>
 
             <div class=textFieldContainer>
                 <label for="rating">Rating:</label><br>
-                <input type="number" class="input" name="rating" step="0.1" required>
+                <input type="number" class="input" id="rating" name="rating" step="0.1" required>
             </div>
 
             <br>
 
             <div class=textFieldContainer>
                 <label for="price">Price (in euros):</label><br>
-                <input type="number" class="input" name="price" step="0.01" required>
+                <input type="number" class="input" id="price" name="price" step="0.01" required>
             </div>
 
             <br>
