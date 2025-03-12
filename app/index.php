@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <a href='./oefenopdracht1/index.php'><h1>Oefenopdracht 1</h1></a>
+    <a href='./oefenopdrachten/index.php'><h1>Oefenopdracht 1</h1></a>
 
     
 </body>
