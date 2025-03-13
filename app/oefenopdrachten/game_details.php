@@ -1,3 +1,27 @@
+<?php
+
+if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
+    header("Location: index.php");
+    exit();
+}
+// session user id
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit();
+}
+
+spl_autoload_register(function ($class) {
+    require_once 'classes/' . $class . '.php';
+});
+
+$db = new Database();
+
+$gm = new GameManager($db);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,14 +46,6 @@
 
         <?php
 
-            spl_autoload_register(function ($class) {
-                require_once 'classes/' . $class . '.php';
-            });
-
-            $db = new Database();
-
-            $gm = new GameManager($db);
-
             $id = $_GET['id'];
 
             // echo "<p> The ID should be " . $id . " right now.</p>";
@@ -45,7 +61,7 @@
 
                 <div>
 
-                    <form method="POST">
+                    <form method='POST'>
 
                         <br>
 

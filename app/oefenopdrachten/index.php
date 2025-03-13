@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <p>Forgot your password?</p>
 <br>
-<a href="">I forgot my password</a>
+<a href="wishlist.php">I forgot my password</a>
 <br><br>
 
 </body>
