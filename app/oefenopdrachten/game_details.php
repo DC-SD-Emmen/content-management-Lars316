@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     header("Location: index.php");
     exit();
@@ -56,20 +58,20 @@ $gm = new GameManager($db);
             $games = $gameManager->select();
 
             echo "<div id='sideBar'>
-                
-                <button id='addGame'> Add New Game </button>
 
                 <div>
 
                     <form method='POST'>
-
-                        <br>
 
                         <input type='submit' value='Logout' id='logout' name='logout'>
 
                     </form>
 
                 </div>
+
+                <br>
+        
+                <button id='addGame'> Add New Game </button>
 
                 <div id='gameForm'>
                     <?php

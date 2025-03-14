@@ -183,3 +183,10 @@ p {
     justify-content: end;
     font-size: large;
 }
+
+#wishlistContainer {
+    flex: 85%;
+    margin-left: 10px;
+    background-color: rgb(27, 40, 56);
+    border: 10px solid rgb(27, 40, 56);
+}

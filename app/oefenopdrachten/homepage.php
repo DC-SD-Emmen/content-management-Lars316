@@ -47,6 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
+    <a href='homepage.php'>
+        <img id=back_arrow src='backtohomepage.png'>
+    </a>
+
     <div id=libraryHeader>
         <p id=libraryName>Welcome, to the National Game Library!!!</p>
     </div>
@@ -59,19 +63,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <div id='sideBar'>
 
-            <button id='addGame'> Add New Game </button>
-
             <div>
 
                 <form method="POST">
-
-                    <br>
 
                     <input type="submit" value="Logout" id="logout" name="logout">
 
                 </form>
 
             </div>
+
+            <br>
+
+            <button id='addGame'> Add New Game </button>
 
             <div id='gameForm' style='display: none;'>
                 <?php
