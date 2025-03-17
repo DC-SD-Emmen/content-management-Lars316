@@ -35,11 +35,22 @@ $gm = new GameManager($db);
 
 <body>
 
+    <a href='homepage.php'>
+        <img id=back_arrow src='backtohomepage.png'>
+    </a>
+
     <div id=libraryHeader>
         <p id=libraryName>The National Game Library</p>
     </div>
 
     <div id='main-container'>
+
+        <?php
+        
+        $gameManager = new GameManager($db);
+
+        $games = $gameManager->select();
+        ?>
 
         <div id='sideBar'>
 
@@ -55,7 +66,7 @@ $gm = new GameManager($db);
 
             <br>
 
-            <button id='addGame'> Add New Game </button>
+            <button class='pageButtons'> Add New Game </button>
 
             <div id='gameForm' style='display: none;'>
                 <?php

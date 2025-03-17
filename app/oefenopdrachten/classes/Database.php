@@ -27,7 +27,4 @@
 
   }
 
-  // Programmer
-  // Cond1ti()ns
-
 ?>

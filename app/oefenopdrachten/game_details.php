@@ -71,11 +71,11 @@ $gm = new GameManager($db);
 
                 <br>
         
-                <button id='addGame'> Add New Game </button>
+                <button class='pageButtons'> Add New Game </button>
 
-                <div id='gameForm'>
+                <div id='gameForm' style='display: none;'>
                     <?php
-                    include 'add_game.php';
+                        include 'add_game.php';
                     ?>
                 </div><br><br>";
 

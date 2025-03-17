@@ -75,13 +75,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <br>
 
-            <button id='addGame'> Add New Game </button>
+            <button class='pageButtons'> Add New Game </button>
 
             <div id='gameForm' style='display: none;'>
                 <?php
                     include 'add_game.php';
                 ?>
-            </div><br><br>
+            </div>
+            
+            <br><br>
+
+            <a href="wishlist.php" class='pageButtons'>
+                <button class='pageButtons'> Wishlist </button>
+            </a>
+            
+            <br><br>
 
             <div id="sidebarforSmallScreen">
 
