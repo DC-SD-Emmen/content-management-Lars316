@@ -77,7 +77,15 @@ $gm = new GameManager($db);
                     
                     include 'add_game.php';
                     
-                echo "</div><br><br>";
+                echo "</div>
+                
+                <br><br>
+
+                <a href='your_games.php' class='pageButtons'>
+                    <button class='pageButtons'> Your games </button>
+                </a>
+            
+                <br><br>";
 
                 foreach($games as $data) {
 

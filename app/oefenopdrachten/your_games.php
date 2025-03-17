@@ -6,7 +6,9 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     header("Location: index.php");
     exit();
 }
-// session user id
+
+$sessionID = $_SESSION['userid'];
+
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -100,7 +102,26 @@ $gm = new GameManager($db);
 
             <h1>Your games</h1>
 
-            <p>Wut.</p>
+            <?php
+
+                // foreach($games as $data) {
+
+                //     echo "<a href='game_details.php?id=".$data->getID()."'>
+                //       <img class='gameIcon' src='uploads/" . $data->getImage() . "'>
+                //     </a>";
+                    
+                // }
+
+                $games = $gameManager->getUserGames($sessionID);
+
+                foreach($games as $data) {
+
+                    echo "<a href='game_details.php?id=".$data['id']."'>
+                        <img class='gameIcon' src='uploads/" . $data['image'] . "'>
+                    </a>";
+
+                }
+            ?>
 
         </div>
 
