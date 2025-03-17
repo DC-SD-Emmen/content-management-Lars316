@@ -66,7 +66,7 @@ $gm = new GameManager($db);
 
             <br>
 
-            <button class='pageButtons'> Add New Game </button>
+            <button class='pageButtons' id='addGame'> Add New Game </button>
 
             <div id='gameForm' style='display: none;'>
                 <?php
@@ -98,11 +98,15 @@ $gm = new GameManager($db);
 
         <div id='wishlistContainer'>
 
+            <h1>Your games</h1>
+
             <p>Wut.</p>
 
         </div>
 
     </div>
+
+    <script src='script.js'></script>
    
 </body>
 

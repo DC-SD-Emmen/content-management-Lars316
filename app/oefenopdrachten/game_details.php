@@ -71,13 +71,13 @@ $gm = new GameManager($db);
 
                 <br>
         
-                <button class='pageButtons'> Add New Game </button>
+                <button class='pageButtons' id='addGame'> Add New Game </button>
 
-                <div id='gameForm' style='display: none;'>
-                    <?php
-                        include 'add_game.php';
-                    ?>
-                </div><br><br>";
+                <div id='gameForm' style='display: none;'>";
+                    
+                    include 'add_game.php';
+                    
+                echo "</div><br><br>";
 
                 foreach($games as $data) {
 
@@ -211,6 +211,8 @@ $gm = new GameManager($db);
         ?>
 
     </div>
+
+    <script src='script.js'></script>
 
 </body>
 </html>

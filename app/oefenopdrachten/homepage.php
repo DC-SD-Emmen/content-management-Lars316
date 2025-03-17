@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <br>
 
-            <button class='pageButtons'> Add New Game </button>
+            <button class='pageButtons' id='addGame'> Add New Game </button>
 
             <div id='gameForm' style='display: none;'>
                 <?php
@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <br><br>
 
-            <a href="wishlist.php" class='pageButtons'>
-                <button class='pageButtons'> Wishlist </button>
+            <a href="your_games.php" class='pageButtons'>
+                <button class='pageButtons'> Your games </button>
             </a>
             
             <br><br>
