@@ -42,7 +42,7 @@ $gm = new GameManager($db);
     </a>
 
     <div id=libraryHeader>
-        <p id=libraryName>The National Game Library</p>
+        <p id=libraryName>Your Personal Game Library</p>
     </div>
 
     <div id='main-container'>
@@ -99,8 +99,6 @@ $gm = new GameManager($db);
         </div>
 
         <div id='wishlistContainer'>
-
-            <h1>Your games</h1>
 
             <?php
 

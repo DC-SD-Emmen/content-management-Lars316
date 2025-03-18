@@ -160,12 +160,12 @@ class GameManager {
 
   public function getUserGames($sessionID) {
 
-    $stmt = $this->conn->prepare("SELECT games.title FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
+    $stmt = $this->conn->prepare("SELECT games.id, games.image FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
 
     $stmt->execute();
 
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    return $stmt->fetch();
+    return $stmt->fetchAll();
 
   }
 
