@@ -82,7 +82,7 @@ $gm = new GameManager($db);
                 <br><br>
 
                 <a href='your_games.php' class='pageButtons'>
-                    <button class='pageButtons'> Your games </button>
+                    <button class='pageButtons'> Your Library </button>
                 </a>
             
                 <br><br>";
@@ -191,7 +191,7 @@ $gm = new GameManager($db);
                         Never gonna tell a lie and hurt you</p>
 
                         <p>Additional information:<br>
-                            placeholder
+                            It looks like there's nothing to add.
                         </p>
 
                     </div>
@@ -208,13 +208,13 @@ $gm = new GameManager($db);
                 
             }
 
-        // ('d-m-Y', strtotime($row['Day']))
+            // ('d-m-Y', strtotime($row['Day']))
 
-        //  " . $game['developer'] . "
-        //  " . $game['publisher'] . "
-        //  " . $game['storygenre'] . "
-        //  " . $game['description'] . "
-        //  " . $game['additional information'] . "
+            //  " . $game['developer'] . "
+            //  " . $game['publisher'] . "
+            //  " . $game['storygenre'] . "
+            //  " . $game['description'] . "
+            //  " . $game['additional information'] . "
 
         ?>
 

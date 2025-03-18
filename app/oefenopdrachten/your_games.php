@@ -52,6 +52,7 @@ $gm = new GameManager($db);
         $gameManager = new GameManager($db);
 
         $games = $gameManager->select();
+
         ?>
 
         <div id='sideBar'>
@@ -83,6 +84,7 @@ $gm = new GameManager($db);
                 <div id="sidebarContent">
 
                     <?php
+
                         foreach($games as $data) {
 
                             echo "<a href='game_details.php?id=".$data->getID()."'>
@@ -90,6 +92,7 @@ $gm = new GameManager($db);
                             </a>";
                     
                         }
+
                     ?>
 
                 </div>
@@ -102,15 +105,9 @@ $gm = new GameManager($db);
 
             <?php
 
-                // foreach($games as $data) {
+                $userManager = new UserManager($db);
 
-                //     echo "<a href='game_details.php?id=".$data->getID()."'>
-                //       <img class='gameIcon' src='uploads/" . $data->getImage() . "'>
-                //     </a>";
-                    
-                // }
-
-                $games = $gameManager->getUserGames($sessionID);
+                $games = $userManager->getUserGames($sessionID);
 
                 foreach($games as $data) {
 

@@ -158,9 +158,9 @@ class GameManager {
 
   }
 
-  public function getUserGames($sessionID) {
+  public function getUserGames($id) {
 
-    $stmt = $this->conn->prepare("SELECT games.id, games.image FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
+    $stmt = $this->conn->prepare("SELECT users.username FROM users INNER JOIN user_games ON users.id = user_games.user_id WHERE user_games.game_id = $id;");
 
     $stmt->execute();
 
@@ -168,7 +168,7 @@ class GameManager {
     return $stmt->fetchAll();
 
   }
-
+ 
 }
 
 // return this->conn
