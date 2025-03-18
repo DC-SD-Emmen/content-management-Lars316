@@ -190,3 +190,7 @@ p {
     background-color: rgb(27, 40, 56);
     border: 10px solid rgb(27, 40, 56);
 }
+
+label {
+    color: white;
+}

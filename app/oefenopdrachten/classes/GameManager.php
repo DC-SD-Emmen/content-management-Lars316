@@ -158,7 +158,7 @@ class GameManager {
 
   }
 
-  public function getUserGames($id) {
+  public function getGameUsers($id) {
 
     $stmt = $this->conn->prepare("SELECT users.username FROM users INNER JOIN user_games ON users.id = user_games.user_id WHERE user_games.game_id = $id;");
 
@@ -166,6 +166,17 @@ class GameManager {
 
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
     return $stmt->fetchAll();
+
+  } // Oh yeah should add try and catch to these things
+
+  public function addGameToFavs($user_id, $game_id) {
+
+    $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)");
+
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->bindParam(':game_id', $game_id);
+
+    $stmt->execute();
 
   }
  

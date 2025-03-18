@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="your_games.php" class='pageButtons'>
                 <button class='pageButtons'> Your Library </button>
             </a>
-            
+
             <br><br>
 
             <div id="sidebarforSmallScreen">

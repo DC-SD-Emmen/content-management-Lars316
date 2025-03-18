@@ -22,6 +22,19 @@ $db = new Database();
 
 $gm = new GameManager($db);
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if(isset($_POST['AddToFavs'])) {
+
+        $user_id = $_SESSION['userid'];
+        $game_id = $_GET['id'];
+
+        $gm->addGameToFavs($user_id, $game_id);
+
+    }
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +148,8 @@ $gm = new GameManager($db);
 
                         <p id=detailpageGameTitle>Title: " . $game['title'] . "</p>
 
-                        <p>We're no strangers to love<br> 
+                        <p>Description:<br>
+                        We're no strangers to love<br> 
                         You know the rules and so do I<br>
                         A full commitment's what I'm thinkin' of<br>
                         You wouldn't get this from any other guy<br>
@@ -190,6 +204,8 @@ $gm = new GameManager($db);
                         Never gonna say goodbye<br>
                         Never gonna tell a lie and hurt you</p>
 
+                        <br>
+
                         <p>Additional information:<br>
                             It looks like there's nothing to add.
                         </p>
@@ -202,6 +218,27 @@ $gm = new GameManager($db);
                             Current price: €" . $game['price'] . 
                         "</p>
 
+                    </div>
+
+                    <div>
+
+                    <form method='post'>
+                        <label for='AddToFavs'>Do you want to add this game to your library?</label>
+                        <input type='submit' value='Add to library' class='pageButtons' id='AddToFavs' name='AddToFavs'>
+                    </form>";
+                    
+                    $gameManager = new GameManager($db);
+
+                    $users = $gameManager->getGameUsers($id);
+
+                    echo "<p>These users have this game in their personal library:<br><br>";
+
+                        foreach($users as $user) {
+                            echo $user['username'] . "<br><br>";
+                        }
+
+                    echo "</p>
+                    
                     </div>
 
                 </div>";

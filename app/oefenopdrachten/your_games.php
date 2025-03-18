@@ -116,6 +116,7 @@ $gm = new GameManager($db);
                     </a>";
 
                 }
+                
             ?>
 
         </div>
