@@ -42,7 +42,7 @@ $gm = new GameManager($db);
     </a>
 
     <div id=libraryHeader>
-        <p id=libraryName>Your Personal Game Library</p>
+        <p class="header">Your Personal Game Library</p>
     </div>
 
     <div id='main-container'>

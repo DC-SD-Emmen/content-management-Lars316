@@ -1,17 +1,45 @@
-/* The display is already responsive without having any @media rules, suprisingly, so that's why there aren't any.  */
+/* The display is already suprisingly responsive without having any @media rules, so that's why there aren't any.  */
 
 body {
     background-color: rgb(23, 26, 33);
+}
+
+.loginNregisterContainer {
+    display: flex;
+    justify-content: center;
+}
+
+/* yes I created a entire container just for this cuz if I try it with the body, a lot of tomfoolery will probably happen*/
+
+.loginNregisterForm {
+    background-color: rgb(43, 71, 93);
+    border: 5px solid rgb(43, 71, 93);
+    border-radius: 10px;
+    width: 500px;
+}
+
+.link {
+    color: blue;
+}
+
+.loginNregister {
+    background-color: rgb(79, 123, 167);
+    color: white;
+    height: 35px;
+    width: 185px;
+    border: 1px solid rgb(79, 123, 167);
+    border-radius: 5px;
 }
 
 #libraryHeader {
     background-color: rgb(27, 40, 56);
     height: max-content;
     border: 1px solid rgb(27, 40, 56);
+    /* border-radius: 10px; */
     margin-bottom: 10px;
 }
 
-#libraryName {
+.header {
     color: white;
     text-align: center;
     font-size: xx-large;
@@ -47,6 +75,7 @@ body {
     top: 15%;
     z-index: 99;
     width: 400px;
+    border-radius: 10px;
 }
 
 #formHeader {

@@ -6,7 +6,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     header("Location: index.php");
     exit();
 }
-// session user id
+
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </a>
 
     <div id=libraryHeader>
-        <p id=libraryName>The National Game Library</p>
+        <p class="header">The National Game Library</p>
     </div>
 
     <div id="main-container">

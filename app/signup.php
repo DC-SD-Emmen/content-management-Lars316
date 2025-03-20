@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 spl_autoload_register(function ($class) {
     require_once 'classes/' . $class . '.php';
 });
@@ -11,23 +9,7 @@ $userManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (isset($_POST['login'])) {
-
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        $user = $userManager->getUser($username);
-
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['userid'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-            header("Location: homepage.php");
-            exit();
-        } else {
-            echo "<p>Login failed.</p>";
-        }
-
-    }
+    $userManager->insert($_POST);
 
 }
 
@@ -38,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Login</title>
+    <title>User Registration</title>
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
@@ -51,58 +33,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
+<a href="index.php">
+    <img id=back_arrow src='backtohomepage.png'>
+</a>
 
 <div id=libraryHeader>
-    <p class="header">Entering the National Game Library.</p>
+    <p class="header">Get your account for the National Game Library!</p>
 </div>
 
 <div class="loginNregisterContainer">
 
     <div class="loginNregisterForm">
 
-        <p class="header">Please login.</p>
+        <p class="header">Sign up</p>
 
         <form method="post" enctype="multipart/form-data">
 
             <div class="textFieldContainer">
 
-                <p>Please enter your username.</p>
+                <p>Please pick a username. You can use letters and numbers,<br>
+                but no special characters with the exception of underscores are allowed.
+                </p>
 
                     <label for="username">Username:</label><br>
                     <input type="text" class="input" name="username" id="username" required><br>
 
                 <br>
 
-                <p>Please enter your password.</p>
+                <p>Please choose a password, and make sure to remember it and keep it safe.<br>
+                Please use a combination of letters, numbers, and special characters,<br>
+                and make sure it's at least 8 characters long.
+                </p>
 
                     <label for="password">Password:</label><br>
                     <input type="password" class="input" name="password" id="password" required><br>
 
-                <!-- </div> -->
+                <!-- <label for="passwordRepeat">Repeat password:</label><br>
+                <input type="password" class="input" name="passwordRepeat" required><br> -->
+                <!-- Okay since Google is refusing to give me an anwser on how to compare the inputs, this idea is gonna have to be saved until later. -->
 
                 <br>
 
-                <input type='submit' class='loginNregister' name='login' value='Login'>
+                <button type="submit" class="loginNregister">Sign up</button>
 
             </div>
 
         </form>
-
-        <br>
-
-        <div class="textFieldContainer">
-
-            <p>Don't have an account?</p>
-            <br>
-            <a href="signup.php" class="link">Sign up</a>
-            <br><br>
-
-            <p>Forgot your password?</p>
-            <br>
-            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="link">I forgot my password</a>
-            <br><br>
-                
-        </div>
 
     </div>
 
