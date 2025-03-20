@@ -49,12 +49,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <a href='homepage.php'>
-        <img id=back_arrow src='backtohomepage.png'>
-    </a>
-
     <div id=libraryHeader>
+            
+        <a href="homepage.php">
+            <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+        </a>
+ 
         <p class="header">The National Game Library</p>
+
+        <a href="account.php">
+            <img id="account" src="AccountIcon.png" alt="Account">
+        </a>
+
     </div>
 
     <div id="main-container">

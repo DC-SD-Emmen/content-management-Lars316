@@ -37,12 +37,18 @@ $gm = new GameManager($db);
 
 <body>
 
-    <a href='homepage.php'>
-        <img id=back_arrow src='backtohomepage.png'>
-    </a>
-
     <div id=libraryHeader>
+            
+        <a href="homepage.php">
+            <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+        </a>
+ 
         <p class="header">Your Personal Game Library</p>
+
+        <a href="account.php">
+            <img id="account" src="AccountIcon.png" alt="Account">
+        </a>
+
     </div>
 
     <div id='main-container'>
@@ -78,8 +84,6 @@ $gm = new GameManager($db);
             </div><br><br>
 
             <div id="sidebarforSmallScreen">
-
-                <!-- <button>Menu</button> -->
 
                 <div id="sidebarContent">
 

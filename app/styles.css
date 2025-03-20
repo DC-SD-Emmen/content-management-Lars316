@@ -32,18 +32,34 @@ body {
 }
 
 #libraryHeader {
+    display: flex;
     background-color: rgb(27, 40, 56);
     height: max-content;
     border: 1px solid rgb(27, 40, 56);
-    /* border-radius: 10px; */
+    margin-bottom: 10px;
+}
+
+#back_arrow {
+    flex: 5%;
+    justify-self: flex-start;
+    max-width: 75px;
+    max-height: 50px;
+    margin-top: 5px;
     margin-bottom: 10px;
 }
 
 .header {
+    flex: 90%;
     color: white;
     text-align: center;
     font-size: xx-large;
     margin: 10px;
+}
+
+#account {
+    flex: 5%;
+    max-height: 50px;
+    max-width: 50px;
 }
 
 .pageButtons {
@@ -173,13 +189,6 @@ input[type="file"] {
 
 p {
     color: white;
-}
-
-#back_arrow {
-    max-width: 75px;
-    max-height: 50px;
-    margin-top: 5px;
-    margin-bottom: 10px;
 }
 
 #detailsContainer {
