@@ -21,6 +21,28 @@ spl_autoload_register(function ($class) {
 $db = new Database();
 $um = new UserManager($db);
 
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+//     if (isset($_POST['login'])) {
+
+//         $username = $_POST['username'];
+//         $password = $_POST['password'];
+
+//         $user = $userManager->getUser($username);
+
+//         if (password_verify($password, $user['password'])) {
+//             $_SESSION['userid'] = $user['id'];
+//             $_SESSION['username'] = $user['username'];
+//             header("Location: homepage.php");
+//             exit();
+//         } else {
+//             echo "<p>Login failed.</p>";
+//         }
+
+//     }
+
+// }
+
 ?>
 
 <!DOCTYPE html>

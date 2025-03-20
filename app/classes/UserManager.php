@@ -39,6 +39,8 @@ class UserManager {
     $username = htmlspecialchars($data['username']);
     $password = htmlspecialchars($data['password']);
 
+    $emailRegex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
+    $emailRegex = '/^[A-Za-z0-9@._-]+$/'
     $usernameRegex = '/^[A-Za-z0-9_]+$/';
 
     if (!preg_match($usernameRegex, $username)) {

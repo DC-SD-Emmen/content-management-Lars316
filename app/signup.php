@@ -51,12 +51,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="textFieldContainer">
 
+                <!-- <p>Please enter your email.
+                    This is useful in cases like losing access to<br>
+                    your account, or forgetting your password.
+                    <br><br>
+                    Do keep in mind though, that our email system only allows<br>
+                    letters, numbers, and the special characters '@', '.', '-' and '_'.<br>
+                    If your email adress contains any other characters besides these,<br>
+                    please contact support to see what we can do.
+                </p>
+
+                <label for="email">Email:</label><br>
+                <input type="email" class="input" name="email" id="email" required><br>
+
+                <br> -->
+
                 <p>Please pick a username. You can use letters and numbers,<br>
                 but no special characters with the exception of underscores are allowed.
                 </p>
 
-                    <label for="username">Username:</label><br>
-                    <input type="text" class="input" name="username" id="username" required><br>
+                <label for="username">Username:</label><br>
+                <input type="text" class="input" name="username" id="username" required><br>
 
                 <br>
 
@@ -65,8 +80,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 and make sure it's at least 8 characters long.
                 </p>
 
-                    <label for="password">Password:</label><br>
-                    <input type="password" class="input" name="password" id="password" required><br>
+                <label for="password">Password:</label><br>
+                <input type="password" class="input" name="password" id="password" required><br>
 
                 <!-- <label for="passwordRepeat">Repeat password:</label><br>
                 <input type="password" class="input" name="passwordRepeat" required><br> -->

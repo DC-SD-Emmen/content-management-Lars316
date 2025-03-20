@@ -68,17 +68,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <p>Please enter your username.</p>
 
-                    <label for="username">Username:</label><br>
-                    <input type="text" class="input" name="username" id="username" required><br>
+                <label for="username">Username:</label><br>
+                <input type="text" class="input" name="username" id="username" required><br>
 
                 <br>
 
                 <p>Please enter your password.</p>
 
-                    <label for="password">Password:</label><br>
-                    <input type="password" class="input" name="password" id="password" required><br>
-
-                <!-- </div> -->
+                <label for="password">Password:</label><br>
+                <input type="password" class="input" name="password" id="password" required><br>
 
                 <br>
 
