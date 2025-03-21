@@ -7,6 +7,8 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     exit();
 }
 
+$sessionUser = $_SESSION['username'];
+
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -47,19 +49,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <div id=libraryHeader>
+    <?php
+
+    echo '<div id=libraryHeader>
             
         <a href="homepage.php">
             <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
         </a>
  
-        <p class="header">Welcome, to the National Game Library!!!</p>
+        <p class="header">Welcome, ' . $sessionUser . ', to the National Game Library!!!</p>
 
         <a href="account.php">
             <img id="account" src="AccountIcon.png" alt="Account">
         </a>
 
-    </div>
+    </div>';
+
+    ?>
 
     <?php
         $games = $gameManager->select();

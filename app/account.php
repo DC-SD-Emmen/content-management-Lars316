@@ -7,6 +7,8 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     exit();
 }
 
+$username = $_SESSION['username'];
+
 if (isset($_POST['logout'])) {
     session_unset();
     session_destroy();
@@ -19,29 +21,6 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
-$um = new UserManager($db);
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-//     if (isset($_POST['login'])) {
-
-//         $username = $_POST['username'];
-//         $password = $_POST['password'];
-
-//         $user = $userManager->getUser($username);
-
-//         if (password_verify($password, $user['password'])) {
-//             $_SESSION['userid'] = $user['id'];
-//             $_SESSION['username'] = $user['username'];
-//             header("Location: homepage.php");
-//             exit();
-//         } else {
-//             echo "<p>Login failed.</p>";
-//         }
-
-//     }
-
-// }
 
 ?>
 
@@ -131,6 +110,11 @@ $games = $gameManager->select();
     <?php
 
         $userManager = new UserManager($db);
+
+        $user = $userManager->getUser($username);
+
+        $email = $user['email'];
+        $displayedUsername = $user['username'];
         
     ?>
 

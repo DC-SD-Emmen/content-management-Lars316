@@ -33,12 +33,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-<a href="index.php">
-    <img id=back_arrow src='backtohomepage.png'>
-</a>
-
 <div id=libraryHeader>
+        
+    <a href="index.php">
+        <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+    </a>
+
     <p class="header">Get your account for the National Game Library!</p>
+
+    <a href="account.php">
+        <img id="account" src="AccountIcon.png" alt="Account">
+    </a>
+
 </div>
 
 <div class="loginNregisterContainer">
@@ -51,20 +57,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="textFieldContainer">
 
-                <!-- <p>Please enter your email.
+                <p>Please enter your email.
                     This is useful in cases like losing access to<br>
                     your account, or forgetting your password.
                     <br><br>
                     Do keep in mind though, that our email system only allows<br>
-                    letters, numbers, and the special characters '@', '.', '-' and '_'.<br>
-                    If your email adress contains any other characters besides these,<br>
+                    letters, numbers, the special characters '-' and '_',<br>
+                    and your email must contain an '@', and at least one period after the '@'.<br>
+                    If your email adress does not follow these rules,<br>
                     please contact support to see what we can do.
                 </p>
 
                 <label for="email">Email:</label><br>
                 <input type="email" class="input" name="email" id="email" required><br>
 
-                <br> -->
+                <br>
 
                 <p>Please pick a username. You can use letters and numbers,<br>
                 but no special characters with the exception of underscores are allowed.

@@ -36,14 +36,17 @@ class UserManager {
 
   public function insert($data) {
 
+    $email = htmlspecialchars($data['email']);
     $username = htmlspecialchars($data['username']);
     $password = htmlspecialchars($data['password']);
 
-    $emailRegex = '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-    $emailRegex = '/^[A-Za-z0-9@._-]+$/'
+    $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
     $usernameRegex = '/^[A-Za-z0-9_]+$/';
 
-    if (!preg_match($usernameRegex, $username)) {
+    if (!preg_match($emailRegex, $email)) {
+      echo "<p>Sorry, our system does not see the email you filled in as a valid email address.<br>
+      If this is your actual email adress, please contact our support to see what we can do.</p>";
+    } elseif (!preg_match($usernameRegex, $username)) {
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
 
@@ -65,16 +68,17 @@ class UserManager {
       try {
 
         //:username and :password are placeholders
-        $stmt = $this->conn->prepare("INSERT INTO users (username, password)
-        VALUES (:username, :password)");
+        $stmt = $this->conn->prepare("INSERT INTO users (email, username, password)
+        VALUES (:email, :username, :password)");
 
+        $stmt->bindParam(':email', $email);
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':password', $passwordHashed);
 
         $stmt->execute();
         echo "<p>Your account has been created successfully.</p>";
       } catch(PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        echo "<p>Error: " . $e->getMessage() . "</p>";
       }
 
     }

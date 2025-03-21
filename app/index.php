@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <div id=libraryHeader>
-    <p class="header">Entering the National Game Library.</p>
+    <p class="header">Entering the National Game Library</p>
 </div>
 
 <div class="loginNregisterContainer">
