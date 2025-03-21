@@ -123,8 +123,8 @@ $games = $gameManager->select();
         <p>Do you want to change your email? Then please fill in your account details so we can make sure you are who you say you are.<br>
         These details must also include your old email. After that, you can enter in your new email.</p>
 
-        <label for="emailV">Your old email:</label><br>
-        <input type="emailV" class="input" name="emailV" id="emailV" required><br>
+        <label for="emailO">Your old email:</label><br>
+        <input type="email" class="input" name="emailV" id="emailO" required><br>
 
         <br>
 
@@ -139,11 +139,11 @@ $games = $gameManager->select();
         <br>
 
         <label for="passwordV">Your password:</label><br>
-        <input type="passwordV" class="input" name="passwordV" id="passwordV" required><br>
+        <input type="password" class="input" name="passwordV" id="passwordV" required><br>
 
         <br>
 
-        <button type="submit" class="loginNregister">Change email</button>
+        <input type='submit' class='loginNregister' name='emailN' value='Change email'>
     
     </form>
 
@@ -157,12 +157,12 @@ $games = $gameManager->select();
         These details must also include your old username. After that, you can enter in your new username.</p>
 
         <label for="emailV">Your email:</label><br>
-        <input type="emailV" class="input" name="emailV" id="emailV" required><br>
+        <input type="email" class="input" name="emailV" id="emailV" required><br>
 
         <br>
 
-        <label for="usernameV">Your old username:</label><br>
-        <input type="text" class="input" name="usernameV" id="usernameV" required><br>
+        <label for="usernameO">Your old username:</label><br>
+        <input type="text" class="input" name="usernameV" id="usernameO" required><br>
 
         <br>
 
@@ -171,12 +171,12 @@ $games = $gameManager->select();
 
         <br>
 
-        <label for="passwordV">Your password:</label><br>
-        <input type="passwordV" class="input" name="passwordV" id="passwordV" required><br>
+        <label for="passwordC">Your password:</label><br>
+        <input type="password" class="input" name="passwordV" id="passwordC" required><br>
 
         <br>
 
-        <button type="submit" class="loginNregister">Change username</button>
+        <input type='submit' class='loginNregister' name='usernameN' value='Change username'>
     
     </form>
 
@@ -189,18 +189,18 @@ $games = $gameManager->select();
         <p>Do you want to change your password? Then please fill in your account details so we can make sure you are who you say you are.<br>
         These details must also include your old password. After that, you can enter in your new password.</p>
 
-        <label for="emailV">Your email:</label><br>
-        <input type="emailV" class="input" name="emailV" id="emailV" required><br>
+        <label for="emailC">Your email:</label><br>
+        <input type="email" class="input" name="emailV" id="emailC" required><br>
 
         <br>
 
-        <label for="usernameV">Your username:</label><br>
-        <input type="text" class="input" name="usernameV" id="usernameV" required><br>
+        <label for="usernameC">Your username:</label><br>
+        <input type="text" class="input" name="usernameV" id="usernameC" required><br>
 
         <br>
 
-        <label for="passwordV">Your old password:</label><br>
-        <input type="passwordV" class="input" name="passwordV" id="passwordV" required><br>
+        <label for="passwordO">Your old password:</label><br>
+        <input type="password" class="input" name="passwordV" id="passwordO" required><br>
 
         <br>
 
@@ -209,7 +209,7 @@ $games = $gameManager->select();
 
         <br>
 
-        <button type="submit" class="loginNregister">Change password</button>
+        <input type='submit' class='loginNregister' name='passwordN' value='Change password'>
     
     </form>
 
