@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div id=libraryHeader>
             
         <a href="homepage.php">
-            <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+            <img class="back_arrow" src="backtohomepage.png" alt="Back to homepage">
         </a>
  
         <p class="header">The National Game Library</p>

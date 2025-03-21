@@ -31,6 +31,10 @@ body {
     border-radius: 5px;
 }
 
+.loginNregister:hover {
+    cursor: pointer;
+}
+
 #libraryHeader {
     display: flex;
     background-color: rgb(27, 40, 56);
@@ -39,7 +43,7 @@ body {
     margin-bottom: 10px;
 }
 
-#back_arrow {
+.back_arrow {
     flex: 5%;
     justify-self: flex-start;
     max-width: 75px;
@@ -222,7 +226,7 @@ p {
     font-size: large;
 }
 
-#wishlistContainer {
+#accountContainer {
     flex: 85%;
     margin-left: 10px;
     background-color: rgb(27, 40, 56);

@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div id=libraryHeader>
         
     <a href="index.php">
-        <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+        <img class="back_arrow" src="backtohomepage.png" alt="Back to homepage">
     </a>
 
     <p class="header">Get your account for the National Game Library!</p>

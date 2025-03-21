@@ -8,6 +8,7 @@ if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
 }
 
 $sessionID = $_SESSION['userid'];
+$sessionUser = $_SESSION['username'];
 
 if (isset($_POST['logout'])) {
     session_unset();
@@ -37,19 +38,23 @@ $gm = new GameManager($db);
 
 <body>
 
-    <div id=libraryHeader>
+    <?php
+
+    echo '<div id=libraryHeader>
             
         <a href="homepage.php">
-            <img id=back_arrow src="backtohomepage.png" alt="Back to homepage">
+            <img class="back_arrow" src="backtohomepage.png" alt="Back to homepage">
         </a>
  
-        <p class="header">Your Personal Game Library</p>
+        <p class="header">' . $sessionUser . '\'s Personal Game Library</p>
 
         <a href="account.php">
             <img id="account" src="AccountIcon.png" alt="Account">
         </a>
 
-    </div>
+    </div>';
+
+    ?>
 
     <div id='main-container'>
 
@@ -105,7 +110,7 @@ $gm = new GameManager($db);
 
         </div>
 
-        <div id='wishlistContainer'>
+        <div id='gameIcons'>
 
             <?php
 
