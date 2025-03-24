@@ -36,10 +36,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userManager->changeEmail($sessionID, $emailO, $email, $username, $password);
         // Just a heads up, the $emailO stores the old email to be checked, and just $email stores the new one.
         // I did it this way so I can reuse a function in the usermanager class.
+        // This applies to the other $[BLANK]O and $[BLANK] variables as well.
 
     }
 
+    if (isset($_POST['usernameN'])) {
 
+        $sessionID = $_SESSION['userid'];
+        $email = $_POST['emailV'];
+        $usernameO = $_POST['usernameV'];
+        $username = $_POST['username'];
+        $password = $_POST['passwordV'];
+
+        $userManager->changeUsername($sessionID, $email, $usernameO, $username, $password);
+
+    }
+
+    if (isset($_POST['passwordN'])) {
+
+        $sessionID = $_SESSION['userid'];
+        $email = $_POST['emailV'];
+        $username = $_POST['usernameV'];
+        $passwordO = $_POST['passwordV'];
+        $password = $_POST['password'];
+
+        $userManager->changePassword($sessionID, $email, $username, $passwordO, $password);
+
+    }
 
 }
 
@@ -99,7 +122,7 @@ $games = $gameManager->select();
 
     <br>
 
-    <button class='pageButtons' id='addGame'> Add new Game </button>
+    <button class='pageButtons' id='addGame'> Add New Game </button>
 
     <div id='gameForm' style='display: none;'>
         <?php
@@ -192,7 +215,7 @@ $games = $gameManager->select();
 
         <br>
 
-        <label for="passwordC">Your password:</label><br>
+        <label for="passwordC">Your password:</label><br> <!-- had to change up the id's here so the code will stop complaining. -->
         <input type="password" class="input" name="passwordV" id="passwordC" required><br>
 
         <br>

@@ -168,7 +168,7 @@ class UserManager {
 
       $stmt->execute();
 
-      echo "<p>Your email has been changed successfully.</p>";
+      echo "<p>Your username has been changed successfully.</p>";
 
     }
 
@@ -176,7 +176,7 @@ class UserManager {
 
   // THIS FUNCTION IS FOR PASSWORDS
 
-  public function changeUsername($sessionID, $email, $username, $passwordO, $password) {
+  public function changePassword($sessionID, $email, $username, $passwordO, $password) {
     
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
 
@@ -190,26 +190,38 @@ class UserManager {
     if ($user['email'] != $email) {
       echo "<p>The email you filled in does not match the email we have in our databases.</p>";
       return;
-    } elseif ($user['username'] != $usernameO) {
+    } elseif ($user['username'] != $username) {
       echo "<p>The username you filled in does not match the username we have in our databases.</p>";
       return;
-    } elseif (!password_verify($password, $user['password'])) {
+    } elseif (!password_verify($passwordO, $user['password'])) {
       echo "<p>The password you filled in does not match the password we have in our databases.</p>";
-      return;
-    } elseif (!$this->checkUsername($username)) {
-      echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
       return;
     } else {
       
-      $stmt = $this->conn->prepare("UPDATE users SET username = :username WHERE id = :id");
+      $errors = [];
 
-      $stmt->bindParam(':username', $username);
+      if (!$this->checkPassword($password, $errors)) {
+
+        echo "<p>You did not include one or more conditions in your password, those being:</p>";
+        foreach ($errors as $error) {
+            echo "<p>" . $error . "</p>";
+        }
+
+        return; // REMEMBER TO ADD TRY AND CATCH YOU STUPID IDIOT
+
+      }
+
+      $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+
+      $stmt = $this->conn->prepare("UPDATE users SET password = :password WHERE id = :id");
+
+      $stmt->bindParam(':password', $passwordHashed);
       $stmt->bindParam(':id', $sessionID);
 
       $stmt->execute();
 
-      echo "<p>Your email has been changed successfully.</p>";
-
+      echo "<p>Your password has been changed successfully.</p>";
+      
     }
 
   }
