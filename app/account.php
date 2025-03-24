@@ -21,23 +21,25 @@ spl_autoload_register(function ($class) {
 });
 
 $db = new Database();
+$userManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['emailN'])) {
 
+        $sessionID = $_SESSION['userid'];
         $email = $_POST['emailV']; // POST gets it data via the name, NOT the id.
         $username = $_POST['usernameV'];
         $password = $_POST['passwordV'];
 
-        $user = $userManager->getUser($username);
+        $userManager->changeEmail($email, $username, $password, $sessionID);
 
-        if (password_verify($password, $user['password'])) {
-            echo "<p>Email successfully changed.</p>";
-            exit();
-        } else {
-            echo "<p>Login failed.</p>";
-        }
+        // if (password_verify($password, $user['password'])) {
+        //     echo "<p>Email successfully changed.</p>";
+        //     exit();
+        // } else {
+        //     echo "<p>Login failed.</p>";
+        // }
 
     }
 

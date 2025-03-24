@@ -93,6 +93,20 @@ class UserManager {
     
   }
 
+  public function updateE($email)
+
+  {
+
+    $stmt = $this->conn->prepare("UPDATE users SET email = :email WHERE username = :username");
+
+    $stmt->bindParam(':email', $email);
+
+    $stmt->execute();
+
+    echo "<p>Your email has been changed successfully.</p>";
+
+  }
+
   public function GetUser($username) {
 
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
