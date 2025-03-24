@@ -64,6 +64,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
+    if (isset($_POST['delete'])) {
+
+        echo "<div id='deleteAccountConfirmation'>
+
+            <div class='textFieldContainer'>
+                <p>Are you absolutely sure you want to delete your account?<br>
+                This action cannot be undone!</p>
+            </div>
+
+            <div id='confirmationButtons'>
+                <input type='submit' class='confirmationButton' name='yes' value='Yes'>
+                <input type='submit' class='confirmationButton' name='no' value='No'>
+            </div>
+
+        </div>";
+
+        // $sessionID = $_SESSION['userid'];
+        // $email = $_POST['emailV'];
+        // $username = $_POST['usernameV'];
+        // $password = $_POST['passwordV'];
+
+        // $userManager->delete($sessionID, $email, $username, $password);
+
+    }
+
 }
 
 ?>
@@ -264,18 +289,18 @@ $games = $gameManager->select();
 
         <p>Do you want to delete your account? Then please fill in your account details so we can make sure you are who you say you are.</p>
 
-        <label for="emailC">Your email:</label><br>
-        <input type="email" class="input" name="emailV" id="emailC" required><br>
+        <label for="emailD">Your email:</label><br>
+        <input type="email" class="input" name="emailV" id="emailD" required><br>
 
         <br>
 
-        <label for="usernameC">Your username:</label><br>
-        <input type="text" class="input" name="usernameV" id="usernameC" required><br>
+        <label for="usernameD">Your username:</label><br>
+        <input type="text" class="input" name="usernameV" id="usernameD" required><br>
 
         <br>
 
-        <label for="passwordO">Your password:</label><br>
-        <input type="password" class="input" name="passwordV" id="passwordO" required><br>
+        <label for="passwordD">Your password:</label><br>
+        <input type="password" class="input" name="passwordV" id="passwordD" required><br>
 
         <br>
 

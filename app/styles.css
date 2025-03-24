@@ -95,6 +95,7 @@ body {
     top: 15%;
     z-index: 99;
     width: 400px;
+    padding-bottom: 10px;
     border-radius: 10px;
 }
 
@@ -137,9 +138,9 @@ input[type="file"] {
     height: 500px;
 } */
 
-#submitandResetButton {
-    display: block;
-    text-align: center;
+#submitAndResetButton {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .submitNreset {
@@ -149,7 +150,10 @@ input[type="file"] {
     width: 185px;
     border: 1px solid rgb(79, 123, 167);
     border-radius: 5px;
-    margin-left: 10px;
+}
+
+.submitNreset:hover {
+    cursor: pointer;
 }
 
 #main-container {
@@ -231,6 +235,35 @@ p {
     margin-left: 10px;
     background-color: rgb(27, 40, 56);
     border: 10px solid rgb(27, 40, 56);
+}
+
+#confirmationButtons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.confirmationButton {
+    background-color: rgb(79, 123, 167);
+    color: white;
+    height: 35px;
+    width: 185px;
+    border: 1px solid rgb(79, 123, 167);
+    border-radius: 5px;
+}
+
+.confirmationButton:hover {
+    cursor: pointer;
+}
+
+#deleteAccountConfirmation {
+    background-color: rgb(43, 71, 93);
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    z-index: 99;
+    width: 400px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 label {
