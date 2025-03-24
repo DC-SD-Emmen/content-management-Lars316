@@ -34,8 +34,12 @@ class UserManager {
     
   }
 
+  public function checkEmail($email) {
+    return preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email);
+  }
+
   public function checkUsername($username) {
-    if(!preg_match('/^[A-Za-z0-9_]+$/', $username));
+    return preg_match("/^[A-Za-z0-9_]+$/", $username);
   }
 
   public function insert($data) {
@@ -47,11 +51,9 @@ class UserManager {
     $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
     $usernameRegex = '/^[A-Za-z0-9_]+$/';
 
-    if (!preg_match($emailRegex, $email)) {
+    if (!$this->checkEmail($email)) {
       echo "<p>Sorry, our system does not see the email you filled in as a valid email address.<br>
       If this is your actual email adress, please contact our support to see what we can do.</p>";
-    // } elseif (!preg_match($usernameRegex, $username)) {
-      // echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } elseif (!$this->checkUsername($username)) {
       echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
     } else {
