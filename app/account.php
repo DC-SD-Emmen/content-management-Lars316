@@ -64,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-    if (isset($_POST['delete'])) {
+    if (isset($_POST['deleteAccount'])) {
 
-        echo "<div id='deleteAccountConfirmation'>
+        echo "<div id='deleteAccountConfirmation' style='display: none;'>
 
             <div class='textFieldContainer'>
                 <p>Are you absolutely sure you want to delete your account?<br>
@@ -74,18 +74,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div id='confirmationButtons'>
-                <input type='submit' class='confirmationButton' name='yes' value='Yes'>
-                <input type='submit' class='confirmationButton' name='no' value='No'>
+                <input type='submit' class='confirmationButton' id='yes' name='yes' value='Yes'>
+                <input type='submit' class='confirmationButton' id='no' name='no' value='No'>
             </div>
 
         </div>";
 
-        // $sessionID = $_SESSION['userid'];
-        // $email = $_POST['emailV'];
-        // $username = $_POST['usernameV'];
-        // $password = $_POST['passwordV'];
+        if (isset($_POST['yes'])) {
 
-        // $userManager->delete($sessionID, $email, $username, $password);
+            $sessionID = $_SESSION['userid'];
+            $email = $_POST['emailV'];
+            $username = $_POST['usernameV'];
+            $password = $_POST['passwordV'];
+
+            $userManager->delete($sessionID, $email, $username, $password);
+
+        } elseif (isset($_POST['no'])) {
+
+            echo "<p>Okay, your account will not be deleted.</p>";
+
+        }
 
     }
 
@@ -304,7 +312,7 @@ $games = $gameManager->select();
 
         <br>
 
-        <input type="submit" class="loginNregister" name="delete" value="Delete account?">
+        <input type="submit" class="loginNregister" name="deleteAccount" value="Delete account?">
 
     </form>
 

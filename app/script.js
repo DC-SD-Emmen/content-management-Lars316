@@ -16,3 +16,15 @@ addButton.addEventListener('click', function () {
     }
 
 })
+
+let openDeleteConfirmation = document.getElementById('deleteAccount');
+let closeDeleteConfirmation = document.getElementById('no');
+let deleteConfirmation = document.getElementById('deleteAccountConfirmation');
+
+openDeleteConfirmation.addEventListener('click', function () {
+    deleteConfirmation.style.display = 'block';
+});
+
+closeDeleteConfirmation.addEventListener('click', function () {
+    deleteConfirmation.style.display = 'none';
+});
