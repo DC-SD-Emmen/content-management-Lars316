@@ -93,17 +93,124 @@ class UserManager {
     
   }
 
-  public function updateE($email)
+  // THIS FUNCTION IS FOR EMAILS (The functions look very similar, so Imma just scream which function does what.)
 
-  {
+  public function changeEmail($sessionID, $emailO, $email, $username, $password) {
+    
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
 
-    $stmt = $this->conn->prepare("UPDATE users SET email = :email WHERE username = :username");
-
-    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':id', $sessionID);
 
     $stmt->execute();
 
-    echo "<p>Your email has been changed successfully.</p>";
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
+
+    if ($user['email'] != $emailO) {
+      echo "<p>The email you filled in does not match the email we have in our databases.</p>";
+      return;
+    } elseif ($user['username'] != $username) {
+      echo "<p>The username you filled in does not match the username we have in our databases.</p>";
+      return;
+    } elseif (!password_verify($password, $user['password'])) {
+      echo "<p>The password you filled in does not match the password we have in our databases.</p>";
+      return;
+    } elseif (!$this->checkEmail($email)) {
+      echo "<p>Sorry, our system does not see the email you filled in as a valid email address.<br>
+      If this is your actual email adress, please contact our support to see what we can do.</p>";
+      return;
+    } else {
+      
+      $stmt = $this->conn->prepare("UPDATE users SET email = :email WHERE id = :id");
+
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':id', $sessionID);
+
+      $stmt->execute();
+
+      echo "<p>Your email has been changed successfully.</p>";
+
+    }
+
+  }
+
+  // THIS FUNCTION IS FOR USERNAMES
+
+  public function changeUsername($sessionID, $email, $usernameO, $username, $password) {
+    
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+
+    $stmt->bindParam(':id', $sessionID);
+
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
+
+    if ($user['email'] != $email) {
+      echo "<p>The email you filled in does not match the email we have in our databases.</p>";
+      return;
+    } elseif ($user['username'] != $usernameO) {
+      echo "<p>The username you filled in does not match the username we have in our databases.</p>";
+      return;
+    } elseif (!password_verify($password, $user['password'])) {
+      echo "<p>The password you filled in does not match the password we have in our databases.</p>";
+      return;
+    } elseif (!$this->checkUsername($username)) {
+      echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
+      return;
+    } else {
+      
+      $stmt = $this->conn->prepare("UPDATE users SET username = :username WHERE id = :id");
+
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':id', $sessionID);
+
+      $stmt->execute();
+
+      echo "<p>Your email has been changed successfully.</p>";
+
+    }
+
+  }
+
+  // THIS FUNCTION IS FOR PASSWORDS
+
+  public function changeUsername($sessionID, $email, $username, $passwordO, $password) {
+    
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+
+    $stmt->bindParam(':id', $sessionID);
+
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    $user = $stmt->fetch();
+
+    if ($user['email'] != $email) {
+      echo "<p>The email you filled in does not match the email we have in our databases.</p>";
+      return;
+    } elseif ($user['username'] != $usernameO) {
+      echo "<p>The username you filled in does not match the username we have in our databases.</p>";
+      return;
+    } elseif (!password_verify($password, $user['password'])) {
+      echo "<p>The password you filled in does not match the password we have in our databases.</p>";
+      return;
+    } elseif (!$this->checkUsername($username)) {
+      echo "<p>Sorry, the username you filled in contains one or more characters that are not accepted.</p>";
+      return;
+    } else {
+      
+      $stmt = $this->conn->prepare("UPDATE users SET username = :username WHERE id = :id");
+
+      $stmt->bindParam(':username', $username);
+      $stmt->bindParam(':id', $sessionID);
+
+      $stmt->execute();
+
+      echo "<p>Your email has been changed successfully.</p>";
+
+    }
 
   }
 

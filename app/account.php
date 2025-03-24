@@ -28,20 +28,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['emailN'])) {
 
         $sessionID = $_SESSION['userid'];
-        $email = $_POST['emailV']; // POST gets it data via the name, NOT the id.
+        $emailO = $_POST['emailV']; // POST gets it data via the name, NOT the id.
+        $email = $_POST['email'];
         $username = $_POST['usernameV'];
         $password = $_POST['passwordV'];
 
-        $userManager->changeEmail($email, $username, $password, $sessionID);
-
-        // if (password_verify($password, $user['password'])) {
-        //     echo "<p>Email successfully changed.</p>";
-        //     exit();
-        // } else {
-        //     echo "<p>Login failed.</p>";
-        // }
+        $userManager->changeEmail($sessionID, $emailO, $email, $username, $password);
+        // Just a heads up, the $emailO stores the old email to be checked, and just $email stores the new one.
+        // I did it this way so I can reuse a function in the usermanager class.
 
     }
+
+
 
 }
 
@@ -146,7 +144,7 @@ $games = $gameManager->select();
         <p>Do you want to change your email? Then please fill in your account details so we can make sure you are who you say you are.<br>
         These details must also include your old email. After that, you can enter in your new email.</p>
 
-        <label for="emailO">Your old email:</label><br>
+        <label for="emailO">Your old email:</label><br> <!-- the label knows what it is for via the id of the input -->
         <input type="email" class="input" name="emailV" id="emailO" required><br>
 
         <br>
