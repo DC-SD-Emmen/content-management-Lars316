@@ -188,6 +188,7 @@ $games = $gameManager->select();
         <br>
 
         <input type='submit' class='loginNregister' name='emailN' value='Change email'>
+        <!-- would probably be a good idea to change the name of the class since it isn't used only for login and signup -->
     
     </form>
 
@@ -259,16 +260,28 @@ $games = $gameManager->select();
 
     <br>
 
-    <?php
+    <form method="post" enctype="multipart/form-data">
 
-        // $userManager = new UserManager($db);
+        <p>Do you want to delete your account? Then please fill in your account details so we can make sure you are who you say you are.</p>
 
-        // $user = $userManager->getUser($username);
+        <label for="emailC">Your email:</label><br>
+        <input type="email" class="input" name="emailV" id="emailC" required><br>
 
-        // $email = $user['email'];
-        // $displayedUsername = $user['username'];
-        
-    ?>
+        <br>
+
+        <label for="usernameC">Your username:</label><br>
+        <input type="text" class="input" name="usernameV" id="usernameC" required><br>
+
+        <br>
+
+        <label for="passwordO">Your password:</label><br>
+        <input type="password" class="input" name="passwordV" id="passwordO" required><br>
+
+        <br>
+
+        <input type="submit" class="loginNregister" name="delete" value="Delete account?">
+
+    </form>
 
 </div>
 
