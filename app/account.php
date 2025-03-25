@@ -66,6 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['deleteAccount'])) {
 
+        $sessionID = $_SESSION['userid'];
+        $email = $_POST['emailV'];
+        $username = $_POST['usernameV'];
+        $password = $_POST['passwordV'];
+
+        $userManager->deleteAccount($sessionID, $email, $username, $password);
+
         // echo "<div id='deleteAccountConfirmation' style='display: none;'>
 
         //     <div class='textFieldContainer'>
@@ -79,13 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //     </div>
 
         // </div>";
-
-        $sessionID = $_SESSION['userid'];
-        $email = $_POST['emailV'];
-        $username = $_POST['usernameV'];
-        $password = $_POST['passwordV'];
-
-        $userManager->delete($sessionID, $email, $username, $password);
 
         // if (isset($_POST['yes'])) {
 

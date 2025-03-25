@@ -23,7 +23,7 @@ addButton.addEventListener('click', function () {
 $(document).ready(function () {
 
     $('#deleteButton').click(function (event) {
-        let confirmation = confirm('Are you sure you want to delete this game?');
+        let confirmation = confirm('Are you absolutely sure you want to delete your account? This action cannot be undone!');
         if (!confirmation) {
             event.preventDefault(); // prevent form submission
             //stop propagation

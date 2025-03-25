@@ -15,18 +15,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $username = $_POST['username'];
         $password = $_POST['password'];
-
+    
         $user = $userManager->getUser($username);
-
-        if (password_verify($password, $user['password'])) {
+    
+        if ($user && password_verify($password, $user['password'])) {
             $_SESSION['userid'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             header("Location: homepage.php");
             exit();
         } else {
-            echo "<p>Login failed.</p>";
+            echo "<p>Sorry, the login failed because you filled in an invalid username and/or password.</p>";
         }
-
+    
     }
 
 }

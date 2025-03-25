@@ -93,6 +93,19 @@ class UserManager {
     
   }
 
+  public function GetUser($username) {
+
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+
+    $stmt->bindParam(':username', $username);
+
+    $stmt->execute();
+
+    $stmt->setFetchMode(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
+
+  }
+
   // THIS FUNCTION IS FOR EMAILS (The functions look very similar, so Imma just scream which function does what.)
 
   public function changeEmail($sessionID, $emailO, $email, $username, $password) {
@@ -226,16 +239,45 @@ class UserManager {
 
   }
 
-  public function GetUser($username) {
+  public function deleteAccount($sessionID, $email, $username, $password) {
+    
+    $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
 
-    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
-
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':id', $sessionID);
 
     $stmt->execute();
 
     $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    return $stmt->fetch();
+    $user = $stmt->fetch();
+
+    if ($user['email'] != $email) {
+      echo "<p>The email you filled in does not match the email we have in our databases.</p>";
+      return;
+    } elseif ($user['username'] != $username) {
+      echo "<p>The username you filled in does not match the username we have in our databases.</p>";
+      return;
+    } elseif (!password_verify($password, $user['password'])) {
+      echo "<p>The password you filled in does not match the password we have in our databases.</p>";
+      return;
+    } else {
+
+      $stmt = $this->conn->prepare("DELETE FROM user_games WHERE user_id = :id");
+
+      $stmt->bindParam(':id', $sessionID);
+
+      $stmt->execute();
+      
+      $stmt = $this->conn->prepare("DELETE FROM users WHERE id = :id");
+
+      $stmt->bindParam(':id', $sessionID);
+
+      $stmt->execute();
+
+      header("Location: index.php");
+
+      echo "<script>alert('Your account has successfully been deleted.');</script>";
+
+    }
 
   }
 
