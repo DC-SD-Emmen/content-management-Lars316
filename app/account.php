@@ -160,7 +160,7 @@ $games = $gameManager->select();
 
     <div id='gameForm' style='display: none;'>
         <?php
-            include 'add_game.php';
+            require_once 'add_game.php';
         ?>
     </div><br><br>
 

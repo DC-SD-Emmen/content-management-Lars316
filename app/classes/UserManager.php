@@ -85,6 +85,7 @@ class UserManager {
 
         $stmt->execute();
         echo "<p>Your account has been created successfully.</p>";
+
       } catch(PDOException $e) {
         echo "<p>Error: " . $e->getMessage() . "</p>";
       }
@@ -95,18 +96,24 @@ class UserManager {
 
   public function GetUser($username) {
 
-    $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
+    try {
 
-    $stmt->bindParam(':username', $username);
+      $stmt = $this->conn->prepare("SELECT * FROM users WHERE username = :username");
 
-    $stmt->execute();
+      $stmt->bindParam(':username', $username);
 
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    return $stmt->fetch();
+      $stmt->execute();
+
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      return $stmt->fetch();
+
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
 
   }
 
-  // THIS FUNCTION IS FOR EMAILS (The functions look very similar, so Imma just scream which function does what.)
+  // THIS FUNCTION IS FOR EMAILS (The functions look very similar, so I'm just going to scream which function does what.)
 
   public function changeEmail($sessionID, $emailO, $email, $username, $password) {
     
@@ -283,12 +290,18 @@ class UserManager {
 
   public function getUserGames($sessionID) {
 
-    $stmt = $this->conn->prepare("SELECT games.id, games.image FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
+    try {
 
-    $stmt->execute();
+      $stmt = $this->conn->prepare("SELECT games.id, games.image FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
 
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    return $stmt->fetchAll();
+      $stmt->execute();
+
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll();
+
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
 
   }
  

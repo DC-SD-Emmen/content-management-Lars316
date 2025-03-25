@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div id='gameForm' style='display: none;'>
                 <?php
-                    include 'add_game.php';
+                    require_once 'add_game.php';
                 ?>
             </div>
             

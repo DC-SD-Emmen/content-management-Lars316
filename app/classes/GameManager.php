@@ -160,23 +160,70 @@ class GameManager {
 
   public function getGameUsers($id) {
 
-    $stmt = $this->conn->prepare("SELECT users.username FROM users INNER JOIN user_games ON users.id = user_games.user_id WHERE user_games.game_id = $id;");
+    try {
 
-    $stmt->execute();
+      $stmt = $this->conn->prepare("SELECT users.username FROM users INNER JOIN user_games ON users.id = user_games.user_id WHERE user_games.game_id = $id;");
 
-    $stmt->setFetchMode(PDO::FETCH_ASSOC);
-    return $stmt->fetchAll();
+      $stmt->execute();
+
+      $stmt->setFetchMode(PDO::FETCH_ASSOC);
+      return $stmt->fetchAll();
+    
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
 
   } // Oh yeah should add try and catch to these things
 
   public function addGameToFavs($user_id, $game_id) {
 
-    $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)");
+    try {
+
+      $stmt = $this->conn->prepare("INSERT INTO user_games (user_id, game_id) VALUES (:user_id, :game_id)");
+
+      $stmt->bindParam(':user_id', $user_id);
+      $stmt->bindParam(':game_id', $game_id);
+
+      $stmt->execute();
+
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+
+  }
+
+  public function isGameInFavs($user_id, $game_id) {
+
+    try {
+
+      $stmt = $this->conn->prepare("SELECT COUNT(*) FROM user_games WHERE user_id = :user_id AND game_id = :game_id");
+
+      $stmt->bindParam(':user_id', $user_id);
+      $stmt->bindParam(':game_id', $game_id);
+      
+      $stmt->execute();
+      return $stmt->fetchColumn() > 0;
+
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
+
+  }
+
+  public function removeGameFromFavs($user_id, $game_id) {
+
+    try {
+
+    $stmt = $this->conn->prepare("DELETE FROM user_games WHERE user_id = :user_id AND game_id = :game_id");
 
     $stmt->bindParam(':user_id', $user_id);
     $stmt->bindParam(':game_id', $game_id);
 
     $stmt->execute();
+
+    } catch (PDOException $e) {
+      echo "Error: " . $e->getMessage();
+    }
 
   }
  

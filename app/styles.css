@@ -230,6 +230,10 @@ p {
     font-size: large;
 }
 
+.smallBlankSpace {
+    margin: 25px;
+}
+
 #accountContainer {
     flex: 85%;
     margin-left: 10px;

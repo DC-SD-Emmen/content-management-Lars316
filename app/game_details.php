@@ -24,13 +24,30 @@ $gm = new GameManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if(isset($_POST['AddToFavs'])) {
+    if(isset($_POST['addToFavs'])) {
 
         $user_id = $_SESSION['userid'];
         $game_id = $_GET['id'];
 
         $gm->addGameToFavs($user_id, $game_id);
 
+        echo "<p>This game has been added to your library.</p>";
+
+    }
+
+    if(isset($_POST['removeFromFavs'])) {
+
+        $user_id = $_SESSION['userid'];
+        $game_id = $_GET['id'];
+    
+        // Check if the game is in the user's library
+        if ($gm->isGameInFavs($user_id, $game_id)) {
+            $gm->removeGameFromFavs($user_id, $game_id);
+            echo "<p>This game has been removed from your library.</p>";
+        } else {
+            echo "<p>This game is not in your library. Can't remove what ain't there.</p>";
+        }
+    
     }
     
 }
@@ -94,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div id='gameForm' style='display: none;'>";
                     
-                    include 'add_game.php';
+                    require_once 'add_game.php';
                     
                 echo "</div>
                 
@@ -226,25 +243,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     </div>
 
-                    <div>
+                    <div class='textFieldContainer'>
 
                     <form method='post'>
-                        <label for='AddToFavs'>Do you want to add this game to your library?</label>
-                        <input type='submit' value='Add to library' class='pageButtons' id='AddToFavs' name='AddToFavs'>
-                    </form>";
-                    
-                    $gameManager = new GameManager($db);
+                        <label for='addToFavs'>Do you want to add this game to your library?</label>
+                        <input type='submit' value='Add to your library' class='pageButtons' id='addToFavs' name='addToFavs'>
+                    </form>
 
-                    $users = $gameManager->getGameUsers($id);
+                    <br>
 
-                    echo "<p>These users have this game in their personal library:<br><br>";
+                    <form method='post'>
+                        <label for='removeFromFavs'>Or do you want to remove this game from your library?</label>
+                        <input type='submit' value='Remove from your library' class='pageButtons' id='removeFromFavs' name='removeFromFavs'>
+                    </form>
 
-                        foreach($users as $user) {
-                            echo $user['username'] . "<br><br>";
-                        }
+                    <p class=smallBlankSpace></p>
 
-                    echo "</p>
-                    
                     </div>
 
                 </div>";
