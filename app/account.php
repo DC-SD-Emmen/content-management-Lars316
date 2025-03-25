@@ -66,34 +66,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST['deleteAccount'])) {
 
-        echo "<div id='deleteAccountConfirmation' style='display: none;'>
+        // echo "<div id='deleteAccountConfirmation' style='display: none;'>
 
-            <div class='textFieldContainer'>
-                <p>Are you absolutely sure you want to delete your account?<br>
-                This action cannot be undone!</p>
-            </div>
+        //     <div class='textFieldContainer'>
+        //         <p>Are you absolutely sure you want to delete your account?<br>
+        //         This action cannot be undone!</p>
+        //     </div>
 
-            <div id='confirmationButtons'>
-                <input type='submit' class='confirmationButton' id='yes' name='yes' value='Yes'>
-                <input type='submit' class='confirmationButton' id='no' name='no' value='No'>
-            </div>
+        //     <div id='confirmationButtons'>
+        //         <input type='submit' class='confirmationButton' id='yes' name='yes' value='Yes'>
+        //         <input type='submit' class='confirmationButton' id='no' name='no' value='No'>
+        //     </div>
 
-        </div>";
+        // </div>";
 
-        if (isset($_POST['yes'])) {
+        $sessionID = $_SESSION['userid'];
+        $email = $_POST['emailV'];
+        $username = $_POST['usernameV'];
+        $password = $_POST['passwordV'];
 
-            $sessionID = $_SESSION['userid'];
-            $email = $_POST['emailV'];
-            $username = $_POST['usernameV'];
-            $password = $_POST['passwordV'];
+        $userManager->delete($sessionID, $email, $username, $password);
 
-            $userManager->delete($sessionID, $email, $username, $password);
+        // if (isset($_POST['yes'])) {
 
-        } elseif (isset($_POST['no'])) {
+        // } elseif (isset($_POST['no'])) {
 
-            echo "<p>Okay, your account will not be deleted.</p>";
+        //     echo "<p>Okay, your account will not be deleted.</p>";
 
-        }
+        // }
 
     }
 
@@ -109,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Game Library</title>
     <link rel="icon" type="image/icon" href="controller.jpg">
     <link rel='stylesheet' href='styles.css'>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -293,7 +294,7 @@ $games = $gameManager->select();
 
     <br>
 
-    <form method="post" enctype="multipart/form-data">
+    <form id='deleteForm' method="post" enctype="multipart/form-data">
 
         <p>Do you want to delete your account? Then please fill in your account details so we can make sure you are who you say you are.</p>
 
@@ -312,7 +313,7 @@ $games = $gameManager->select();
 
         <br>
 
-        <input type="submit" class="loginNregister" name="deleteAccount" value="Delete account?">
+        <button id='deleteButton' class="loginNregister" name="deleteAccount">Delete account?</button>
 
     </form>
 

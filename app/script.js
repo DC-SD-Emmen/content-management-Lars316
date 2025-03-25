@@ -17,14 +17,33 @@ addButton.addEventListener('click', function () {
 
 })
 
-let openDeleteConfirmation = document.getElementById('deleteAccount');
-let closeDeleteConfirmation = document.getElementById('no');
-let deleteConfirmation = document.getElementById('deleteAccountConfirmation');
+//make the confirm delete function
 
-openDeleteConfirmation.addEventListener('click', function () {
-    deleteConfirmation.style.display = 'block';
+//jquery document ready rule
+$(document).ready(function () {
+
+    $('#deleteButton').click(function (event) {
+        let confirmation = confirm('Are you sure you want to delete this game?');
+        if (!confirmation) {
+            event.preventDefault(); // prevent form submission
+            //stop propagation
+            event.stopPropagation();
+        } else {
+            //submit form
+            $('#deleteForm').submit();
+        }
+    });
+
 });
 
-closeDeleteConfirmation.addEventListener('click', function () {
-    deleteConfirmation.style.display = 'none';
-});
+// let openDeleteConfirmation = document.getElementById('deleteAccount');
+// let closeDeleteConfirmation = document.getElementById('no');
+// let deleteConfirmation = document.getElementById('deleteAccountConfirmation');
+
+// openDeleteConfirmation.addEventListener('click', function () {
+//     deleteConfirmation.style.display = 'block';
+// });
+
+// closeDeleteConfirmation.addEventListener('click', function () {
+//     deleteConfirmation.style.display = 'none';
+// });
