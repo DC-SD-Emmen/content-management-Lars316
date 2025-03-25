@@ -168,6 +168,14 @@ input[type="file"] {
     width: 200px;
     background-color: rgb(27, 40, 56);
     height: 100vh;
+    align-content: start;
+    justify-content: center;
+}
+
+#sideBarGame {
+    flex-wrap: wrap;
+    align-content: center;
+    /* justify-content: center; */
 }
 
 .gameIconSmall {
@@ -176,9 +184,9 @@ input[type="file"] {
 }
 
 .gameTitle {
-    position: relative;
+    /* position: relative;
     left: 35px;
-    top: -45px;
+    top: -45px; */
     color: white;
 }
 
