@@ -73,28 +73,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $userManager->deleteAccount($sessionID, $email, $username, $password);
 
-        // echo "<div id='deleteAccountConfirmation' style='display: none;'>
-
-        //     <div class='textFieldContainer'>
-        //         <p>Are you absolutely sure you want to delete your account?<br>
-        //         This action cannot be undone!</p>
-        //     </div>
-
-        //     <div id='confirmationButtons'>
-        //         <input type='submit' class='confirmationButton' id='yes' name='yes' value='Yes'>
-        //         <input type='submit' class='confirmationButton' id='no' name='no' value='No'>
-        //     </div>
-
-        // </div>";
-
-        // if (isset($_POST['yes'])) {
-
-        // } elseif (isset($_POST['no'])) {
-
-        //     echo "<p>Okay, your account will not be deleted.</p>";
-
-        // }
-
     }
 
 }
@@ -178,8 +156,8 @@ $games = $gameManager->select();
 
                 foreach($games as $data) {
 
-                    echo "<a href='game_details.php?id=".$data->getID()."'>
-                    <img class='gameIconSmall' src='uploads/" . $data->getImage() . "'><p class='gameTitle'>" . $data->getTitle() . "</p>
+                    echo "<a href='game_details.php?id=".$data->getID()."' class='sideBarGame'>
+                        <img class='gameIconSmall' src='uploads/" . $data->getImage() . "'><p class='gameTitle'>" . $data->getTitle() . "</p>
                     </a>";
             
                 }
@@ -317,12 +295,23 @@ $games = $gameManager->select();
 
     </form>
 
-</div>
+    <div id='deleteAccountConfirmation' style='display: none;'>
+
+        <div class='textFieldContainer'>
+            <p>Are you absolutely sure you want to delete your account?<br>
+            This action cannot be undone!</p>
+        </div>
+
+        <div id='confirmationButtons'>
+            <button class='confirmationButton' id='affirmative'>Yes</button>
+            <button class='confirmationButton' id='negative'>No</button>
+        </div>
+
+    </div>
 
 </div>
 
 <script src='script.js'></script>
-
 
 </body>
 </html>

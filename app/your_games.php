@@ -96,8 +96,8 @@ $gm = new GameManager($db);
 
                         foreach($games as $data) {
 
-                            echo "<a href='game_details.php?id=".$data->getID()."'>
-                            <img class='gameIconSmall' src='uploads/" . $data->getImage() . "'><p class='gameTitle'>" . $data->getTitle() . "</p>
+                            echo "<a href='game_details.php?id=".$data->getID()."' class='sideBarGame'>
+                                <img class='gameIconSmall' src='uploads/" . $data->getImage() . "'><p class='gameTitle'>" . $data->getTitle() . "</p>
                             </a>";
                     
                         }

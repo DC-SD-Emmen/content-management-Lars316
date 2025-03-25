@@ -17,33 +17,56 @@ addButton.addEventListener('click', function () {
 
 })
 
-//make the confirm delete function
+// Boy this code did just not wanna work at first, guess the program really wanted to delete accounts.
+$(document).ready(function () { // for some reason the $ is causing an error in the console, but I have no idea what it's problem is.
 
-//jquery document ready rule
-$(document).ready(function () {
+    // $('#deleteButton').click(function (event) {
+    //     let confirmation = confirm('Are you absolutely sure you want to delete your account? This action cannot be undone!');
+    //     if (!confirmation) { // if the user decides to not delete their account, these two will prevent the form from submitting.
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     } else {
+    //         // otherwise it will submit the form.
+    //         $('#deleteForm').submit();
+    //     }
+
+    // });
+
+    // $('#deleteButton').click(function (event) {
+    //     event.preventDefault();
+    //     $('#deleteAccountConfirmation').show();
+    // });
+
+    // $('#affirmative').click(function () {
+    //     $('#deleteAccountConfirmation').hide();
+    //     $('#deleteForm').submit();
+    // });
+
+    // $('#negative').click(function () {
+    //     $('#deleteAccountConfirmation').hide();
+    // });
 
     $('#deleteButton').click(function (event) {
-        let confirmation = confirm('Are you absolutely sure you want to delete your account? This action cannot be undone!');
-        if (!confirmation) {
-            event.preventDefault(); // prevent form submission
-            //stop propagation
-            event.stopPropagation();
+        event.preventDefault();
+
+        // Check if the form is valid
+        if ($('#deleteForm')[0].checkValidity()) {
+            $('#deleteAccountConfirmation').show();
         } else {
-            //submit form
-            $('#deleteForm').submit();
+            // If the form is not valid, show the browser's validation messages
+            $('#deleteForm')[0].reportValidity();
         }
     });
 
+    $('#affirmative').click(function () {
+        $('#deleteAccountConfirmation').hide();
+        $('#deleteForm')[0].submit();
+    });
+
+    $('#negative').click(function () {
+        // event.preventDefault();
+        // event.stopPropagation();
+        $('#deleteAccountConfirmation').hide();
+    });
+
 });
-
-// let openDeleteConfirmation = document.getElementById('deleteAccount');
-// let closeDeleteConfirmation = document.getElementById('no');
-// let deleteConfirmation = document.getElementById('deleteAccountConfirmation');
-
-// openDeleteConfirmation.addEventListener('click', function () {
-//     deleteConfirmation.style.display = 'block';
-// });
-
-// closeDeleteConfirmation.addEventListener('click', function () {
-//     deleteConfirmation.style.display = 'none';
-// });

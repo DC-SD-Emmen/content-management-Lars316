@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user_id = $_SESSION['userid'];
         $game_id = $_GET['id'];
     
-        // Check if the game is in the user's library
+        // Even tho there wouldn't be any errors if I didn't check, I still thought it'd be a nice feature to check if the game is already in the library.
         if ($gm->isGameInFavs($user_id, $game_id)) {
             $gm->removeGameFromFavs($user_id, $game_id);
             echo "<p>This game has been removed from your library.</p>";
@@ -125,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 foreach($games as $data) {
 
-                    echo "<a href='game_details.php?id=".$data->getID()."'>
+                    echo "<a href='game_details.php?id=".$data->getID()."' class='sideBarGame'>
                         <img class='gameIconSmall' src='uploads/" . $data->getImage() . "'><p class='gameTitle'>" . $data->getTitle() . "</p>
                     </a>";
                 

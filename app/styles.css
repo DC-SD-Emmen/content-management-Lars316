@@ -1,15 +1,27 @@
 /* The display is already suprisingly responsive without having any @media rules, so that's why there aren't any.  */
 
+/* This code below is just general stuff like background and text color */
+
 body {
     background-color: rgb(23, 26, 33);
 }
 
+p {
+    color: white;
+}
+
+label {
+    color: white;
+}
+
+/* This code below is for the login and signing up, which I first called register but I'm too lazy to change it. */
+
 .loginNregisterContainer {
+    /* (yes I created a entire container just for this cuz if I try it with the body, a lot of tomfoolery will probably happen) */
+    /* (also I think turning on auto formatting or something on was a mistake, it basically only reformats stuff when I don't want it to) */
     display: flex;
     justify-content: center;
 }
-
-/* yes I created a entire container just for this cuz if I try it with the body, a lot of tomfoolery will probably happen*/
 
 .loginNregisterForm {
     background-color: rgb(43, 71, 93);
@@ -18,6 +30,7 @@ body {
     width: 500px;
 }
 
+/* Had to change the color of the link or it wouldn't be readable against the dark background */
 .link {
     color: blue;
 }
@@ -34,6 +47,8 @@ body {
 .loginNregister:hover {
     cursor: pointer;
 }
+
+/* This code is for the general layout of every page of library */
 
 #libraryHeader {
     display: flex;
@@ -88,6 +103,8 @@ body {
     cursor: pointer;
 }
 
+/* This code specifically is for the gameform */
+
 #gameForm {
     background-color: rgb(43, 71, 93);
     position: absolute;
@@ -129,14 +146,11 @@ input[type="file"] {
 
 .input {
     background-color: rgb(43, 71, 93);
+    /* I wonder if the British are forced to write color too or if it's changed to colour there...? */
     color: white;
     border: 1px solid white;
     border-radius: 5px;
 }
-
-/* #titleTest {
-    height: 500px;
-} */
 
 #submitAndResetButton {
     display: flex;
@@ -160,6 +174,8 @@ input[type="file"] {
     display: flex;
 }
 
+/* This sidebar is really making me question 'it works... why?' */
+
 #sideBar {
     flex: 15%;
     margin: 0;
@@ -168,25 +184,23 @@ input[type="file"] {
     width: 200px;
     background-color: rgb(27, 40, 56);
     height: 100vh;
-    align-content: start;
     justify-content: center;
 }
 
-#sideBarGame {
+.sideBarGame {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    align-content: center;
-    /* justify-content: center; */
+    align-items: center;
 }
 
 .gameIconSmall {
     max-width: 30px;
     max-height: 30px;
+    margin-right: 5px;
 }
 
 .gameTitle {
-    /* position: relative;
-    left: 35px;
-    top: -45px; */
     color: white;
 }
 
@@ -203,9 +217,7 @@ input[type="file"] {
     margin: 2px;
 }
 
-p {
-    color: white;
-}
+/* This code is more details page specific */
 
 #detailsContainer {
     flex: 85%;
@@ -242,11 +254,24 @@ p {
     margin: 25px;
 }
 
+/* This code is more account page specific */
+
 #accountContainer {
     flex: 85%;
     margin-left: 10px;
     background-color: rgb(27, 40, 56);
     border: 10px solid rgb(27, 40, 56);
+}
+
+#deleteAccountConfirmation {
+    background-color: rgb(43, 71, 93);
+    position: absolute;
+    left: 35%;
+    top: 15%;
+    z-index: 99;
+    width: 400px;
+    padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 #confirmationButtons {
@@ -265,19 +290,4 @@ p {
 
 .confirmationButton:hover {
     cursor: pointer;
-}
-
-#deleteAccountConfirmation {
-    background-color: rgb(43, 71, 93);
-    position: absolute;
-    left: 35%;
-    top: 15%;
-    z-index: 99;
-    width: 400px;
-    padding-bottom: 10px;
-    border-radius: 10px;
-}
-
-label {
-    color: white;
 }
