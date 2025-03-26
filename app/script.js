@@ -26,6 +26,9 @@ $(document).ready(function () { // for some reason the $ is causing an error in 
 
             event.preventDefault();
 
+            //scroll to the top of the page
+            // $('html, body').animate({ scrollTop: 0 }, 'fast');
+
             // Have to do a check to see if the form is filled in, otherwise the confirmation will show up even without data.
             if ($('#deleteForm')[0].checkValidity()) {
                 $('#deleteAccountConfirmation').show();

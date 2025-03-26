@@ -79,7 +79,14 @@ class UserManager {
         $stmt->bindParam(':password', $passwordHashed);
 
         $stmt->execute();
-        echo "<p>Your account has been created successfully.</p>";
+        // echo "<p>Your account has been created successfully. You can now login</p>";
+        // I wanted to make it so once you've signed up, you automatically go to homepage.php, but I couldn't find out how to do that.
+
+        $_SESSION['userid'] = $this->conn->lastInsertId();
+        $_SESSION['username'] = $username;
+
+        header("Location: homepage.php");
+        exit(); 
 
       } catch(PDOException $e) {
         echo "<p>Error: " . $e->getMessage() . "</p>";
@@ -240,6 +247,8 @@ class UserManager {
     }
 
   }
+
+  // THIS FUNCTION IS FOR DELETING ACCOUNTS
 
   public function deleteAccount($sessionID, $email, $username, $password) {
     // Can't just delete an account, so we check the data before we delete it.

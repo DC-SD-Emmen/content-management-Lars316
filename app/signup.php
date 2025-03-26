@@ -4,6 +4,8 @@ spl_autoload_register(function ($class) {
     require_once 'classes/' . $class . '.php';
 });
 
+session_start();
+
 $db = new Database();
 $userManager = new UserManager($db);
 
