@@ -32,6 +32,63 @@ $(document).ready(function () { // for some reason the $ is causing an error in 
 
     // });
 
+    $(document).ready(function () {
+
+        $('#deleteButton').click(function (event) {
+
+            event.preventDefault();
+
+            // Check if the form is valid
+            if ($('#deleteForm')[0].checkValidity()) {
+                $('#deleteAccountConfirmation').show();
+            } else {
+                // If the form is not valid, show the browser's validation messages
+                $('#deleteForm')[0].reportValidity();
+            }
+
+        });
+
+        // $('#affirmative').click(function (event) {
+
+        //     event.preventDefault(); // Prevent default form submission
+        //     $('#deleteAccountConfirmation').hide();
+        //     $('#deleteForm')[0].submit(); // Submit the form programmatically
+
+        // });
+
+        $('#negative').click(function (event) {
+
+            event.preventDefault(); // Prevent default form submission
+            event.stopPropagation();
+            $('#deleteAccountConfirmation').hide();
+
+        });
+
+    });
+
+    // $('#deleteButton').click(function (event) {
+    //     event.preventDefault();
+
+    //     // Check if the form is valid
+    //     if ($('#deleteForm')[0].checkValidity()) {
+    //         $('#deleteAccountConfirmation').show();
+    //     } else {
+    //         // If the form is not valid, show the browser's validation messages
+    //         $('#deleteForm')[0].reportValidity();
+    //     }
+    // });
+
+    // $('#affirmative').click(function () {
+    //     $('#deleteAccountConfirmation').hide();
+    //     $('#deleteForm')[0].submit();
+    // });
+
+    // $('#negative').click(function () {
+    //     // event.preventDefault();
+    //     // event.stopPropagation();
+    //     $('#deleteAccountConfirmation').hide();
+    // });
+
     // $('#deleteButton').click(function (event) {
     //     event.preventDefault();
     //     $('#deleteAccountConfirmation').show();
@@ -45,28 +102,5 @@ $(document).ready(function () { // for some reason the $ is causing an error in 
     // $('#negative').click(function () {
     //     $('#deleteAccountConfirmation').hide();
     // });
-
-    $('#deleteButton').click(function (event) {
-        event.preventDefault();
-
-        // Check if the form is valid
-        if ($('#deleteForm')[0].checkValidity()) {
-            $('#deleteAccountConfirmation').show();
-        } else {
-            // If the form is not valid, show the browser's validation messages
-            $('#deleteForm')[0].reportValidity();
-        }
-    });
-
-    $('#affirmative').click(function () {
-        $('#deleteAccountConfirmation').hide();
-        $('#deleteForm')[0].submit();
-    });
-
-    $('#negative').click(function () {
-        // event.preventDefault();
-        // event.stopPropagation();
-        $('#deleteAccountConfirmation').hide();
-    });
 
 });

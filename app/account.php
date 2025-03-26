@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-    if (isset($_POST['deleteAccount'])) {
+    if (isset($_POST['affirmative'])) {
 
         $sessionID = $_SESSION['userid'];
         $email = $_POST['emailV'];
@@ -293,21 +293,22 @@ $games = $gameManager->select();
 
         <button id='deleteButton' class="loginNregister" name="deleteAccount">Delete account?</button>
 
+        <div id='deleteAccountConfirmation' style='display: none;'>
+
+            <div class='textFieldContainer'>
+                <p>Are you absolutely sure you want to delete your account?<br>
+                This action cannot be undone!</p>
+            </div>
+
+            <div id='confirmationButtons'> <!-- I'm going to try changing only the affirmative button to submit to see if that works. If it does that be stupid, but oh well. -->
+                <!-- <button class='confirmationButton' id='affirmative'>Yes</button> -->
+                <input type='submit' class='confirmationButton' id='affirmative' name='affirmative' value='Yes'>
+                <button class='confirmationButton' id='negative'>No</button>
+            </div>
+
+        </div>
+
     </form>
-
-    <div id='deleteAccountConfirmation' style='display: none;'>
-
-        <div class='textFieldContainer'>
-            <p>Are you absolutely sure you want to delete your account?<br>
-            This action cannot be undone!</p>
-        </div>
-
-        <div id='confirmationButtons'>
-            <button class='confirmationButton' id='affirmative'>Yes</button>
-            <button class='confirmationButton' id='negative'>No</button>
-        </div>
-
-    </div>
 
 </div>
 
