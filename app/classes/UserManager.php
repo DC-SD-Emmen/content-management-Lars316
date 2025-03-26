@@ -9,9 +9,7 @@ class UserManager {
 
   public function checkPassword($password, & $errors) {
 
-    // The variables userName and userPassword refer to the username and password the user filled in,
-    // I just gave them a different name to differentiate them from the username and password used for the database.
-    // (And just in case the code decides to be annoying and use the wrong ones.)
+    // At first these variables were named differently juuust in case the code confused them with those for the database, but that isn't actually a problem lol.
     $errors_init_count = count($errors);
 
     if (strlen($password) < 8) {
@@ -36,20 +34,17 @@ class UserManager {
 
   public function checkEmail($email) {
     return preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/", $email);
-  }
+  } // This regex is actually pretty neat, because you can fill in a lot, but you NEED to have an '@' and at least one dot. Nice going Copilot.
 
   public function checkUsername($username) {
     return preg_match("/^[A-Za-z0-9_]+$/", $username);
-  }
+  } // The username allows underscores, cause this. Is an EPIC. GAMER. WEBSITE. (Sorry if that made you cringe.)
 
-  public function insert($data) {
+  public function insert($data) { // This function does a bunch of checks to make sure the data is valid, and if it is, it inserts it into the database.
 
     $email = htmlspecialchars($data['email']);
     $username = htmlspecialchars($data['username']);
     $password = htmlspecialchars($data['password']);
-
-    $emailRegex = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
-    $usernameRegex = '/^[A-Za-z0-9_]+$/';
 
     if (!$this->checkEmail($email)) {
       echo "<p>Sorry, our system does not see the email you filled in as a valid email address.<br>
@@ -75,7 +70,7 @@ class UserManager {
 
       try {
 
-        //:username and :password are placeholders
+        //:email, :username and :password are placeholders that then get bindParam'd to the actual variables.
         $stmt = $this->conn->prepare("INSERT INTO users (email, username, password)
         VALUES (:email, :username, :password)");
 
@@ -94,7 +89,7 @@ class UserManager {
     
   }
 
-  public function GetUser($username) {
+  public function GetUser($username) { // This function is used to get a user's data so the data in the login can be checked.
 
     try {
 
@@ -113,7 +108,7 @@ class UserManager {
 
   }
 
-  // THIS FUNCTION IS FOR EMAILS (The functions look very similar, so I'm just going to scream which function does what.)
+  // THIS FUNCTION IS FOR CHANGING EMAILS (The functions look very similar, so I'm just going to scream which function does what.)
 
   public function changeEmail($sessionID, $emailO, $email, $username, $password) {
     
@@ -128,7 +123,7 @@ class UserManager {
 
     if ($user['email'] != $emailO) {
       echo "<p>The email you filled in does not match the email we have in our databases.</p>";
-      return;
+      return; // Gotta make sure the user is who they say they are, and that involves their old data too.
     } elseif ($user['username'] != $username) {
       echo "<p>The username you filled in does not match the username we have in our databases.</p>";
       return;
@@ -154,7 +149,7 @@ class UserManager {
 
   }
 
-  // THIS FUNCTION IS FOR USERNAMES
+  // THIS FUNCTION IS FOR CHANGING USERNAMES
 
   public function changeUsername($sessionID, $email, $usernameO, $username, $password) {
     
@@ -194,7 +189,7 @@ class UserManager {
 
   }
 
-  // THIS FUNCTION IS FOR PASSWORDS
+  // THIS FUNCTION IS FOR CHANGING PASSWORDS
 
   public function changePassword($sessionID, $email, $username, $passwordO, $password) {
     
@@ -247,6 +242,7 @@ class UserManager {
   }
 
   public function deleteAccount($sessionID, $email, $username, $password) {
+    // Can't just delete an account, so we check the data before we delete it.
     
     $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
 
@@ -291,6 +287,7 @@ class UserManager {
   public function getUserGames($sessionID) {
 
     try {
+      // This query gets the games that a user has stored in their personal library.
 
       $stmt = $this->conn->prepare("SELECT games.id, games.image FROM games INNER JOIN user_games ON games.id = user_games.game_id WHERE user_games.user_id = $sessionID");
 

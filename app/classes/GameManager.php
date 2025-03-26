@@ -27,9 +27,7 @@ class GameManager {
     } else {
 
       try {
-        // use exec() because no results are returned
 
-        //!stmt moet nog worden aangepast om ook de filename in de database te zetten
         $stmt = $this->conn->prepare("INSERT INTO games (image, title, genre, platform, release_year, rating, price)
         VALUES (:image, :title, :genre, :platform, :release_year, :rating, :price)");
 
@@ -41,7 +39,6 @@ class GameManager {
         $stmt->bindParam(':rating', $rating);
         $stmt->bindParam(':price', $price);
 
-        // $this->conn->exec($sql);
         $stmt->execute();
         echo " New record created successfully.";
       } catch(PDOException $e) {
@@ -53,9 +50,6 @@ class GameManager {
   }
 
   public function select() {
-    //hier komt weer een try / catch
-    //bij try, komt SELECT * from games
-    //bij catch: error
 
     $games = [];
 
@@ -64,10 +58,7 @@ class GameManager {
       $stmt = $this->conn->prepare("SELECT * FROM games");
       $stmt->execute();
     
-      // set the resulting array to associative
-      //Dit maakt van een resultset een Array (lijst)
       $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-      //dit zorgt ervoor dat $result gevult wordt met alle data in een array
       $results = $stmt->fetchAll();
 
       foreach($results as $result) {
@@ -84,8 +75,8 @@ class GameManager {
   }
 
   public function fileUpload($file) {
+    // The comments in this function (and also rest of the code) are I think from ChatGPT...? Might be from somewhere else tho.
 
-    //target dir locatie waar het plaatje wordt neergezet
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($file["name"]);
     $uploadOk = 1;
@@ -144,10 +135,7 @@ class GameManager {
       $stmt = $this->conn->prepare("SELECT * FROM games WHERE id = $id");
       $stmt->execute();
     
-      // set the resulting array to associative
-      //Dit maakt van een resultset een Array (lijst)
       $results = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-      //dit zorgt ervoor dat $result gevult wordt met alle data in een array
       $results = $stmt->fetchAll();
 
       return $results;
@@ -159,6 +147,8 @@ class GameManager {
   }
 
   public function getGameUsers($id) {
+    // This function gets all the users who have a specific game in their personal library.
+    // Due to it not really adding much and privacy reasons, it isn't actually ever called, but I could reuse it at a later date.
 
     try {
 
@@ -173,7 +163,7 @@ class GameManager {
       echo "Error: " . $e->getMessage();
     }
 
-  } // Oh yeah should add try and catch to these things
+  }
 
   public function addGameToFavs($user_id, $game_id) {
 
@@ -228,8 +218,5 @@ class GameManager {
   }
  
 }
-
-// return this->conn
-// this->conn $db getConnection
 
 ?>

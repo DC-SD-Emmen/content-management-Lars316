@@ -98,6 +98,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p>Forgot your password?</p>
             <br>
             <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="link">I forgot my password</a>
+            <!-- I didn't actually make anything in case someone forgot their password cause that most likely involve verification via email and such,
+            and I think that's a liiittle too complicated for a first-year student. -->
             <br><br>
                 
         </div>

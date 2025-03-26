@@ -300,8 +300,9 @@ $games = $gameManager->select();
                 This action cannot be undone!</p>
             </div>
 
-            <div id='confirmationButtons'> <!-- I'm going to try changing only the affirmative button to submit to see if that works. If it does that be stupid, but oh well. -->
-                <!-- <button class='confirmationButton' id='affirmative'>Yes</button> -->
+            <div id='confirmationButtons'>
+                <!-- I'm going to try changing only the affirmative button to submit to see if that works. If it does that be stupid, but oh well. -->
+                <!-- LMAO it actually worked -->
                 <input type='submit' class='confirmationButton' id='affirmative' name='affirmative' value='Yes'>
                 <button class='confirmationButton' id='negative'>No</button>
             </div>
