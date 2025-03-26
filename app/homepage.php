@@ -1,10 +1,10 @@
 <?php
 
-session_start();
+session_start(); // Once logged in is when the session actually starts proper.
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     header("Location: index.php");
-    exit();
+    exit(); // It then also sets the session variables for various uses.
 }
 
 $sessionUser = $_SESSION['username'];

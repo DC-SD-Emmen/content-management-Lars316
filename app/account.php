@@ -24,6 +24,7 @@ $db = new Database();
 $userManager = new UserManager($db);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Have to make make different issets so you don't change your password to your email or something like that.
 
     if (isset($_POST['emailN'])) {
 

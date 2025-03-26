@@ -2,7 +2,7 @@
 // I have tested this site and its functions a lot, but because humans are humans, I can't guarantee that I didn't just miss something,
 // or that someone, somehow, finds a way to break the site in a way I couldn't have thought of.
 
-session_start();
+session_start(); // Here I call a session_start() cuz if I only do that once logged in, I doesn't really work.
 
 spl_autoload_register(function ($class) {
     require_once 'classes/' . $class . '.php';

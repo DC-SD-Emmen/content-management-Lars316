@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+session_start(); // Have to again call session_start(), otherwise this page doesn't work.
 
 if (!isset($_SESSION['username']) || !isset($_SESSION['userid'])) {
     header("Location: index.php");
