@@ -88,6 +88,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" type="image/icon" href="controller.jpg">
     <link rel='stylesheet' href='styles.css'>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Gotta use some jQuery for the confirmation div. I would use a library so it can work offline, but if something relating to this site is offline,
+    the site probably wouldn't be working anyway, so... 
+    (Also if you wondering why the comments have a newline where they do, it's because that way it fits on screen in Visual Studio Code and makes my OCD happy.)-->
 </head>
 
 <body>

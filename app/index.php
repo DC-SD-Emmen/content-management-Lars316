@@ -1,4 +1,6 @@
 <?php
+// I have tested this site and its functions a lot, but because humans are humans, I can't guarantee that I didn't just miss something,
+// or that someone, somehow, finds a way to break the site in a way I couldn't have thought of.
 
 session_start();
 
@@ -51,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-
+<!-- I'm pretty sure this code explains itself. -->
 <div id=libraryHeader>
     <p class="header">Entering the National Game Library</p>
 </div>
